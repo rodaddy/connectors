@@ -107,7 +107,7 @@ void describe("contacts", () => {
     const { client, seen } = stub({ contact: RAW, succeded: true });
     expect(await updateContact(client, "c1", { lastName: "Lovelace" })).toEqual(PARSED);
     expect(seen).toEqual(sent("PUT /contacts/c1", { lastName: "Lovelace" }));
-    // UpdateContactDto has no companyName (R3 P2 #33).
+    // UpdateContactDto has no companyName.
     // @ts-expect-error companyName is not accepted by updateContact
     await updateContact(client, "c1", { companyName: "Acme" });
   });

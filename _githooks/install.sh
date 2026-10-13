@@ -6,8 +6,7 @@
 # `git config core.hooksPath` overrides .git/hooks entirely. A global hooksPath
 # may be set on a machine (~/.config/git/hooks: gitleaks and the protected-branch
 # guard), so copying files into .git/hooks would install nothing: git reports
-# no error and every commit passes. That happened in one of the repos the
-# standard came from.
+# no error and every commit passes. That has happened in practice.
 #
 # So this repo sets a LOCAL core.hooksPath to _githooks/, which wins over the
 # global one. Because that shadows the global hooks, pre-commit and pre-push

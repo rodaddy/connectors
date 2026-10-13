@@ -14,6 +14,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # The container runs as root over a checkout owned by the runner user.
+      - name: trust the checkout
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       # Secret scan of the tree, from a pinned release checked against its sha256.
       - name: gitleaks

@@ -79,7 +79,7 @@
     "max-depth": ["error", { "max": 3 }],
 
     // SIZE, which neither complexity nor max-depth captures. This is the third
-    // leg and the exemplar shipped without it: `createHookServer` was 68
+    // leg. Without it, a `createHookServer` function grew to 68
     // statements doing five distinct jobs -- method check, body read, signature
     // check, schema parse, forward -- and passed BOTH rules above, because it
     // branched shallowly and rarely. A 400-line function that branches three
@@ -194,16 +194,6 @@
   },
 
   "overrides": [
-    // The logging module IS the thing that wraps console.
-    {
-      "files": ["src/exemplar/utils/logging.ts"],
-      "rules": { "no-console": "off" }
-    },
-    // Entry points report a fatal error when the logger may be what failed.
-    {
-      "files": ["src/exemplar/apps/*/main.ts"],
-      "rules": { "no-console": "off" }
-    },
     // Scripts are CLIs; printing is their job.
     {
       "files": ["packages/*/scripts/**/*.ts"],
@@ -226,11 +216,6 @@
         "typescript/no-explicit-any": "off",
         "max-lines-per-function": "off"
       }
-    },
-    // Package index files are documentation surfaces; some only re-export.
-    {
-      "files": ["src/exemplar/apps/index.ts"],
-      "rules": { "unicorn/no-empty-file": "off" }
     }
   ],
 

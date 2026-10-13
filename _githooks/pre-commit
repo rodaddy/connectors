@@ -14,8 +14,6 @@
 # FAIL CLOSED. A missing tool is a failure, not a skip. Three of the mechanisms
 # this standard was derived from "passed" because the thing they invoked was
 # absent or pointed at a path that did not exist.
-#
-# Copied from _DOCS/typescript-exemplar/_githooks/pre-commit; keep the posture.
 
 set -uo pipefail
 
@@ -104,8 +102,8 @@ git checkout-index --prefix="$scratch/" -af
 # Running them with cwd inside $scratch instead means npx finds no node_modules
 # there and either fails to resolve the binary or silently downloads a different
 # version -- and the hook then reports that as a code violation, so every commit
-# fails for a reason that has nothing to do with the code. The exemplar's Python
-# twin hit exactly this on its first demo run (2026-07-30).
+# fails for a reason that has nothing to do with the code.
+# This failure mode was observed on a first demo run.
 staged_paths=()
 for f in "${existing[@]}"; do
   staged_paths+=("$scratch/$f")

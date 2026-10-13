@@ -1,5 +1,5 @@
 {
-  // A build exists here, unlike the exemplar, because this is a library that
+  // A build exists here because this is a library that
   // other apps npm-install. Node does not strip types inside node_modules, so
   // consumers need emitted JS plus .d.ts in dist/.
   "extends": "./tsconfig.json",

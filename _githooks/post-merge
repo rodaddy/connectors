@@ -39,11 +39,5 @@ if changed '^((packages/[^/]+/)?tsconfig.*\.json|\.oxlintrc\.json|\.prettierrc.*
   acted=1
 fi
 
-if changed '^secrets/.*\.example\.json$'; then
-  printf '\n[post-merge] a secrets example changed -- your local secrets/ may be\n'
-  printf '  missing a new key. Diff it against the .example.json file.\n'
-  acted=1
-fi
-
 [[ $acted -eq 1 ]] && printf '\n'
 exit 0
