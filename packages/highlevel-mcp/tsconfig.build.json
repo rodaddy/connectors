@@ -1,0 +1,14 @@
+{
+  // Emits dist/ for `npx highlevel-mcp`; Node does not strip types inside
+  // node_modules, so an installed copy needs emitted JS. No source condition
+  // here: the build resolves the connector through its published dist/.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "rewriteRelativeImportExtensions": true,
+    "customConditions": [],
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts"]
+}

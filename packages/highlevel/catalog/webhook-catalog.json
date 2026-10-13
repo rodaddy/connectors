@@ -1,0 +1,3445 @@
+{
+  "provenance": {
+    "generatedAt": "2026-06-19T17:18:40+05:30",
+    "upstreamCommit": "0af86a4cbd48c66a4071c7e509d1079f9f10ed17",
+    "upstreamDescribe": "0af86a4",
+    "sourceRoot": "docs/webhook events"
+  },
+  "eventCount": 58,
+  "events": [
+    {
+      "event": "AppInstall",
+      "source": "docs/webhook events/AppInstall.md",
+      "title": "App",
+      "description": "Called whenever an app is installed",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "appId": { "type": "string" },
+          "companyId": { "type": "string" },
+          "locationId": { "type": "string" },
+          "userId": { "type": "string" },
+          "planId": { "type": "string" },
+          "trial": {
+            "type": "object",
+            "properties": {
+              "onTrial": { "type": "boolean" },
+              "trialDuration": { "type": "number" },
+              "trialStartDate": { "type": "Date" }
+            }
+          },
+          "isWhitelabelCompany": { "type": "boolean" },
+          "whitelabelDetails": {
+            "type": "object",
+            "properties": {
+              "domain": { "type": "string" },
+              "logoUrl": { "type": "string" }
+            }
+          },
+          "companyName": { "type": "string" }
+        }
+      },
+      "example": null
+    },
+    {
+      "event": "AppointmentCreate",
+      "source": "docs/webhook events/AppointmentCreate.md",
+      "title": "Appointment",
+      "description": "Called whenever an appointment is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "appointment": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "address": { "type": "string" },
+              "title": { "type": "string" },
+              "calendarId": { "type": "string" },
+              "contactId": { "type": "string" },
+              "groupId": { "type": "string" },
+              "appointmentStatus": { "type": "string" },
+              "assignedUserId": { "type": "string" },
+              "users": { "type": "array" },
+              "notes": { "type": "string" },
+              "source": { "type": "string" },
+              "startTime": { "type": "string" },
+              "endTime": { "type": "string" },
+              "dateAdded": { "type": "string" },
+              "dateUpdated": { "type": "string" }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "AppointmentCreate",
+        "locationId": "0007BWpSzSwfiuSl0tR2",
+        "appointment": {
+          "id": "0007BWpSzSwfiuSl0tR2",
+          "address": "https://example.com/meeting",
+          "title": "Appointment with GHL Dev team",
+          "calendarId": "BqTwX8QFwXzpegMve9EQ",
+          "contactId": "9NkT25Vor1v4aQatFsv2",
+          "groupId": "9NkT25Vor1v4aQatFsv2",
+          "appointmentStatus": "confirmed",
+          "assignedUserId": "YlWd2wuCAZQzh2cH1fVZ",
+          "users": ["YlWd2wuCAZQzh2cH1fVZ", "9NkT25Vor1v4aQatFsv2"],
+          "notes": "Some dummy note",
+          "source": "booking_widget",
+          "startTime": "2023-09-25T16:00:00+05:30",
+          "endTime": "2023-09-25T16:00:00+05:30",
+          "dateAdded": "2023-09-25T16:00:00+05:30",
+          "dateUpdated": "2023-09-25T16:00:00+05:30"
+        }
+      }
+    },
+    {
+      "event": "AppointmentCreate",
+      "source": "docs/webhook events/AppointmentDelete.md",
+      "title": "Appointment",
+      "description": "Called whenever an appointment is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "appointment": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "address": { "type": "string" },
+              "title": { "type": "string" },
+              "calendarId": { "type": "string" },
+              "contactId": { "type": "string" },
+              "groupId": { "type": "string" },
+              "appointmentStatus": { "type": "string" },
+              "assignedUserId": { "type": "string" },
+              "users": { "type": "array" },
+              "notes": { "type": "string" },
+              "source": { "type": "string" },
+              "startTime": { "type": "string" },
+              "endTime": { "type": "string" },
+              "dateAdded": { "type": "string" },
+              "dateUpdated": { "type": "string" }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "AppointmentCreate",
+        "locationId": "0007BWpSzSwfiuSl0tR2",
+        "appointment": {
+          "id": "0007BWpSzSwfiuSl0tR2",
+          "address": "https://example.com/meeting",
+          "title": "Appointment with GHL Dev team",
+          "calendarId": "BqTwX8QFwXzpegMve9EQ",
+          "contactId": "9NkT25Vor1v4aQatFsv2",
+          "groupId": "9NkT25Vor1v4aQatFsv2",
+          "appointmentStatus": "confirmed",
+          "assignedUserId": "YlWd2wuCAZQzh2cH1fVZ",
+          "users": ["YlWd2wuCAZQzh2cH1fVZ", "9NkT25Vor1v4aQatFsv2"],
+          "notes": "Some dummy note",
+          "source": "booking_widget",
+          "startTime": "2023-09-25T16:00:00+05:30",
+          "endTime": "2023-09-25T16:00:00+05:30",
+          "dateAdded": "2023-09-25T16:00:00+05:30",
+          "dateUpdated": "2023-09-25T16:00:00+05:30"
+        }
+      }
+    },
+    {
+      "event": "AppointmentCreate",
+      "source": "docs/webhook events/AppointmentUpdate.md",
+      "title": "Appointment",
+      "description": "Called whenever an appointment is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "appointment": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "address": { "type": "string" },
+              "title": { "type": "string" },
+              "calendarId": { "type": "string" },
+              "contactId": { "type": "string" },
+              "groupId": { "type": "string" },
+              "appointmentStatus": { "type": "string" },
+              "assignedUserId": { "type": "string" },
+              "users": { "type": "array" },
+              "notes": { "type": "string" },
+              "source": { "type": "string" },
+              "startTime": { "type": "string" },
+              "endTime": { "type": "string" },
+              "dateAdded": { "type": "string" },
+              "dateUpdated": { "type": "string" }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "AppointmentCreate",
+        "locationId": "0007BWpSzSwfiuSl0tR2",
+        "appointment": {
+          "id": "0007BWpSzSwfiuSl0tR2",
+          "address": "https://example.com/meeting",
+          "title": "Appointment with GHL Dev team",
+          "calendarId": "BqTwX8QFwXzpegMve9EQ",
+          "contactId": "9NkT25Vor1v4aQatFsv2",
+          "groupId": "9NkT25Vor1v4aQatFsv2",
+          "appointmentStatus": "confirmed",
+          "assignedUserId": "YlWd2wuCAZQzh2cH1fVZ",
+          "users": ["YlWd2wuCAZQzh2cH1fVZ", "9NkT25Vor1v4aQatFsv2"],
+          "notes": "Some dummy note",
+          "source": "booking_widget",
+          "startTime": "2023-09-25T16:00:00+05:30",
+          "endTime": "2023-09-25T16:00:00+05:30",
+          "dateAdded": "2023-09-25T16:00:00+05:30",
+          "dateUpdated": "2023-09-25T16:00:00+05:30"
+        }
+      }
+    },
+    {
+      "event": "AppUninstall",
+      "source": "docs/webhook events/AppUninstall.md",
+      "title": "App",
+      "description": "Called whenever an app is uninstalled",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "appId": { "type": "string" },
+          "companyId": { "type": "string" },
+          "locationId": { "type": "string" }
+        }
+      },
+      "example": null
+    },
+    {
+      "event": "AssociationCreate",
+      "source": "docs/webhook events/AssociationCreate.md",
+      "title": "Association Created",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "AssociationDelete",
+      "source": "docs/webhook events/AssociationDelete.md",
+      "title": "Association Deleted",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "AssociationUpdate",
+      "source": "docs/webhook events/AssociationUpdate.md",
+      "title": "Association Updated",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "CampaignStatusUpdate",
+      "source": "docs/webhook events/CampaignStatusUpdate.md",
+      "title": "Campaign",
+      "description": "Called whenever a campaign status is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "contactId": { "type": "string" },
+          "status": { "type": "string" },
+          "templateId": { "type": "string" },
+          "replied": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "CampaignStatusUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "2hxvXh8Fjc69SvujEWMD",
+        "contactId": "CWBf1PR9LvvBkcYqiXlc",
+        "status": "paused",
+        "templateId": "Y2I9XM7aO1hncuSOlc9L",
+        "replied": "Loram ipsum",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "ContactCreate",
+      "source": "docs/webhook events/ContactCreate.md",
+      "title": "Contact",
+      "description": "Called whenever a contact is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "address1": { "type": "string" },
+          "city": { "type": "string" },
+          "companyName": { "type": "string" },
+          "country": { "type": "string" },
+          "source": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dateOfBirth": { "type": "string" },
+          "dnd": { "type": "boolean" },
+          "email": { "type": "string" },
+          "name": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phone": { "type": "string" },
+          "postalCode": { "type": "string" },
+          "state": { "type": "string" },
+          "tags": { "type": "array" },
+          "website": { "type": "string" },
+          "attachments": { "type": "array" },
+          "assignedTo": { "type": "string" },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "value": { "type": ["string", "number", "array", "object"] }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "ContactCreate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "nmFmQEsNgz6AVpgLVUJ0",
+        "address1": "3535 1st St N",
+        "city": "ruDolomitebika",
+        "state": "AL",
+        "companyName": "Loram ipsum",
+        "country": "DE",
+        "source": "xyz form",
+        "dateAdded": "2021-11-26T12:41:02.193Z",
+        "dateOfBirth": "2000-01-05T00:00:00.000Z",
+        "dnd": true,
+        "email": "JohnDeo@gmail.comm",
+        "name": "John Deo",
+        "firstName": "John",
+        "lastName": "Deo",
+        "phone": "+919509597501",
+        "postalCode": "452001",
+        "tags": ["id magna sed Lorem", "Duis dolor commodo aliqua"],
+        "website": "https://www.google.com/",
+        "attachments": [],
+        "assignedTo": "nmFmQEsNgz6AVpgLVUJ0",
+        "customFields": [{ "id": "BcdmQEsNgz6AVpgLVUJ0", "value": "XYZ Corp" }]
+      }
+    },
+    {
+      "event": "ContactDelete",
+      "source": "docs/webhook events/ContactDelete.md",
+      "title": "Contact",
+      "description": "Called whenever a contact is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "address1": { "type": "string" },
+          "city": { "type": "string" },
+          "companyName": { "type": "string" },
+          "country": { "type": "string" },
+          "source": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dateOfBirth": { "type": "string" },
+          "dnd": { "type": "boolean" },
+          "email": { "type": "string" },
+          "name": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phone": { "type": "string" },
+          "postalCode": { "type": "string" },
+          "state": { "type": "string" },
+          "tags": { "type": "array" },
+          "website": { "type": "string" },
+          "attachments": { "type": "array" },
+          "assignedTo": { "type": "string" },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "value": { "type": ["string", "number", "array", "object"] }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "ContactDelete",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "nmFmQEsNgz6AVpgLVUJ0",
+        "address1": "3535 1st St N",
+        "city": "ruDolomitebika",
+        "state": "AL",
+        "companyName": "Loram ipsum",
+        "country": "DE",
+        "source": "xyz form",
+        "dateAdded": "2021-11-26T12:41:02.193Z",
+        "dateOfBirth": "2000-01-05T00:00:00.000Z",
+        "dnd": true,
+        "email": "JohnDeo@gmail.comm",
+        "name": "John Deo",
+        "firstName": "John",
+        "lastName": "Deo",
+        "phone": "+919509597501",
+        "postalCode": "452001",
+        "tags": ["id magna sed Lorem", "Duis dolor commodo aliqua"],
+        "website": "https://www.google.com/",
+        "attachments": [],
+        "assignedTo": "nmFmQEsNgz6AVpgLVUJ0",
+        "customFields": [{ "id": "BcdmQEsNgz6AVpgLVUJ0", "value": "XYZ Corp" }]
+      }
+    },
+    {
+      "event": "ContactDndUpdate",
+      "source": "docs/webhook events/ContactDndUpdate.md",
+      "title": "Contact",
+      "description": "Called whenever a contact's dnd field is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "address1": { "type": "string" },
+          "city": { "type": "string" },
+          "companyName": { "type": "string" },
+          "country": { "type": "string" },
+          "source": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dateOfBirth": { "type": "string" },
+          "dnd": { "type": "boolean" },
+          "dndSettings": {
+            "type": "object",
+            "properties": {
+              "SMS": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "message": { "type": "string" },
+                  "code": { "type": "string" }
+                }
+              },
+              "Email": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "message": { "type": "string" },
+                  "code": { "type": "string" }
+                }
+              },
+              "GMB": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "message": { "type": "string" },
+                  "code": { "type": "string" }
+                }
+              },
+              "FB": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "message": { "type": "string" },
+                  "code": { "type": "string" }
+                }
+              },
+              "WhatsApp": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "message": { "type": "string" },
+                  "code": { "type": "string" }
+                }
+              },
+              "Call": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "message": { "type": "string" },
+                  "code": { "type": "string" }
+                }
+              }
+            }
+          },
+          "email": { "type": "string" },
+          "name": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phone": { "type": "string" },
+          "postalCode": { "type": "string" },
+          "state": { "type": "string" },
+          "tags": { "type": "array" },
+          "website": { "type": "string" },
+          "attachments": { "type": "array" },
+          "assignedTo": { "type": "string" },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "value": { "type": ["string", "number", "array", "object"] }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "ContactDndUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "nmFmQEsNgz6AVpgLVUJ0",
+        "address1": "3535 1st St N",
+        "city": "ruDolomitebika",
+        "state": "AL",
+        "companyName": "Loram ipsum",
+        "country": "DE",
+        "source": "xyz form",
+        "dateAdded": "2021-11-26T12:41:02.193Z",
+        "dateOfBirth": "2000-01-05T00:00:00.000Z",
+        "dnd": true,
+        "dndSettings": {
+          "SMS": { "status": "inactive", "message": "Some message", "code": "101" },
+          "Call": { "status": "inactive", "message": "Some message", "code": "101" },
+          "Email": { "status": "active", "message": "Some message", "code": "101" },
+          "GMB": { "status": "active", "message": "Some message", "code": "101" },
+          "FB": { "status": "active", "message": "Some message", "code": "101" },
+          "WhatsApp": { "status": "active", "message": "Some message", "code": "101" }
+        },
+        "email": "JohnDeo@gmail.comm",
+        "name": "John Deo",
+        "firstName": "John",
+        "lastName": "Deo",
+        "phone": "+919509597501",
+        "postalCode": "452001",
+        "tags": ["id magna sed Lorem", "Duis dolor commodo aliqua"],
+        "website": "https://www.google.com/",
+        "attachments": [],
+        "assignedTo": "nmFmQEsNgz6AVpgLVUJ0",
+        "customFields": [{ "id": "BcdmQEsNgz6AVpgLVUJ0", "value": "XYZ Corp" }]
+      }
+    },
+    {
+      "event": "ContactTagUpdate",
+      "source": "docs/webhook events/ContactTagUpdate.md",
+      "title": "Contact",
+      "description": "Called whenever a contact's tag field is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "address1": { "type": "string" },
+          "city": { "type": "string" },
+          "companyName": { "type": "string" },
+          "country": { "type": "string" },
+          "source": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dateOfBirth": { "type": "string" },
+          "dnd": { "type": "boolean" },
+          "email": { "type": "string" },
+          "name": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phone": { "type": "string" },
+          "postalCode": { "type": "string" },
+          "state": { "type": "string" },
+          "tags": { "type": "array" },
+          "website": { "type": "string" },
+          "attachments": { "type": "array" },
+          "assignedTo": { "type": "string" },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "value": { "type": ["string", "number", "array", "object"] }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "ContactTagUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "nmFmQEsNgz6AVpgLVUJ0",
+        "address1": "3535 1st St N",
+        "city": "ruDolomitebika",
+        "state": "AL",
+        "companyName": "Loram ipsum",
+        "country": "DE",
+        "source": "xyz form",
+        "dateAdded": "2021-11-26T12:41:02.193Z",
+        "dateOfBirth": "2000-01-05T00:00:00.000Z",
+        "dnd": true,
+        "email": "JohnDeo@gmail.comm",
+        "name": "John Deo",
+        "firstName": "John",
+        "lastName": "Deo",
+        "phone": "+919509597501",
+        "postalCode": "452001",
+        "tags": ["id magna sed Lorem", "Duis dolor commodo aliqua"],
+        "website": "https://www.google.com/",
+        "attachments": [],
+        "assignedTo": "nmFmQEsNgz6AVpgLVUJ0",
+        "customFields": [{ "id": "BcdmQEsNgz6AVpgLVUJ0", "value": "XYZ Corp" }]
+      }
+    },
+    {
+      "event": "ContactUpdate",
+      "source": "docs/webhook events/ContactUpdate.md",
+      "title": "Contact",
+      "description": "Called whenever the specific fields in contact is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "address1": { "type": "string" },
+          "city": { "type": "string" },
+          "companyName": { "type": "string" },
+          "country": { "type": "string" },
+          "source": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dateOfBirth": { "type": "string" },
+          "dnd": { "type": "boolean" },
+          "email": { "type": "string" },
+          "name": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "phone": { "type": "string" },
+          "postalCode": { "type": "string" },
+          "state": { "type": "string" },
+          "tags": { "type": "array" },
+          "website": { "type": "string" },
+          "attachments": { "type": "array" },
+          "assignedTo": { "type": "string" },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "value": { "type": ["string", "number", "array", "object"] }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "ContactUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "nmFmQEsNgz6AVpgLVUJ0",
+        "address1": "3535 1st St N",
+        "city": "ruDolomitebika",
+        "state": "AL",
+        "companyName": "Loram ipsum",
+        "country": "DE",
+        "source": "xyz form",
+        "dateAdded": "2021-11-26T12:41:02.193Z",
+        "dateOfBirth": "2000-01-05T00:00:00.000Z",
+        "dnd": true,
+        "email": "JohnDeo@gmail.comm",
+        "name": "John Deo",
+        "firstName": "John",
+        "lastName": "Deo",
+        "phone": "+919509597501",
+        "postalCode": "452001",
+        "tags": ["id magna sed Lorem", "Duis dolor commodo aliqua"],
+        "website": "https://www.google.com/",
+        "attachments": [],
+        "assignedTo": "nmFmQEsNgz6AVpgLVUJ0",
+        "customFields": [{ "id": "BcdmQEsNgz6AVpgLVUJ0", "value": "XYZ Corp" }]
+      }
+    },
+    {
+      "event": "ConversationUnreadUpdate",
+      "source": "docs/webhook events/ConversationUnreadWebhook.md",
+      "title": "Conversation",
+      "description": "Called whenever a conversations unread status is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "contactId": { "type": "string" },
+          "unreadCount": { "type": "number" },
+          "inbox": { "type": "boolean" },
+          "starred": { "type": "boolean" },
+          "deleted": { "type": "boolean" }
+        }
+      },
+      "example": {
+        "type": "ConversationUnreadUpdate",
+        "locationId": "ADVlSQnPsdq3hinusd6C3",
+        "id": "MzKIpg0rEIH2ZUGKf6BS",
+        "contactId": "zsYhPBOUsEHtrK508Wm9",
+        "deleted": false,
+        "inbox": false,
+        "starred": true,
+        "unreadCount": 0
+      }
+    },
+    {
+      "event": "InboundMessage",
+      "source": "docs/webhook events/InboundMessage.md",
+      "title": "InboundMessage",
+      "description": "Called whenever a contact sends a message to the user.",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "InvoiceCreate",
+      "source": "docs/webhook events/InvoiceCreate.md",
+      "title": "Invoice",
+      "description": "Called whenever an invoice is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "status": { "type": "string" },
+          "liveMode": { "type": "boolean" },
+          "amountPaid": { "type": "number" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "name": { "type": "string" },
+          "businessDetails": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "address": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "website": { "type": "string" },
+              "logoUrl": { "type": "string" },
+              "customValues": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "invoiceNumber": { "type": "string" },
+          "currency": { "type": "string" },
+          "contactDetails": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "email": { "type": "string" },
+              "customFields": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryCode": { "type": "string" },
+                  "addressLine1": { "type": "string" },
+                  "addressLine2": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "postalCode": { "type": "string" }
+                }
+              },
+              "additionalEmails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "email": { "type": "string" } }
+                }
+              },
+              "companyName": { "type": "string" }
+            }
+          },
+          "issueDate": { "type": "string" },
+          "dueDate": { "type": "string" },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          },
+          "invoiceItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxes": { "type": "array" },
+                "_id": { "type": "string" },
+                "productId": { "type": "string" },
+                "priceId": { "type": "string" },
+                "currency": { "type": "string" },
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "amount": { "type": "number" }
+              }
+            }
+          },
+          "total": { "type": "number" },
+          "title": { "type": "string" },
+          "amountDue": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "totalSummary": {
+            "type": "object",
+            "properties": {
+              "subTotal": { "type": "number" },
+              "discount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "example": {
+        "_id": "6578278e879ad2646715ba9c",
+        "status": "draft",
+        "liveMode": false,
+        "amountPaid": 0,
+        "altId": "6578278e879ad2646715ba9c",
+        "altType": "location",
+        "name": "New Invoice",
+        "businessDetails": {
+          "name": "ABC Corp.",
+          "address": "9931 Beechwood, TX",
+          "phoneNo": "+1-214-559-6993",
+          "website": "wwww.example.com",
+          "logoUrl": "https://example.com/logo.png",
+          "customValues": ["string"]
+        },
+        "invoiceNumber": "19",
+        "currency": "USD",
+        "contactDetails": {
+          "id": "6578278e879ad2646715ba9c",
+          "phoneNo": "+1-214-559-6993",
+          "email": "alex@example.com",
+          "customFields": ["string"],
+          "name": "Alex",
+          "address": {
+            "countryCode": "US",
+            "addressLine1": "9931 Beechwood",
+            "addressLine2": "Beechwood",
+            "city": "St. Houston",
+            "state": "TX",
+            "postalCode": "559-6993"
+          },
+          "additionalEmails": [{ "email": "alex@example.com" }],
+          "companyName": "ABC Corp."
+        },
+        "issueDate": "2023-01-01",
+        "dueDate": "2023-01-01",
+        "discount": { "type": "percentage", "value": 10 },
+        "invoiceItems": [
+          {
+            "taxes": [],
+            "_id": "c6tZZU0rJBf30ZXx9Gli",
+            "productId": "c6tZZU0rJBf30ZXx9Gli",
+            "priceId": "c6tZZU0rJBf30ZXx9Gli",
+            "currency": "USD",
+            "name": "Macbook Pro",
+            "qty": 1,
+            "amount": 999
+          }
+        ],
+        "total": 999,
+        "title": "INVOICE",
+        "amountDue": 999,
+        "createdAt": "2023-12-12T09:27:42.355Z",
+        "updatedAt": "2023-12-12T09:27:42.355Z",
+        "totalSummary": { "subTotal": 999, "discount": 0 }
+      }
+    },
+    {
+      "event": "InvoiceDelete",
+      "source": "docs/webhook events/InvoiceDelete.md",
+      "title": "Invoice",
+      "description": "Called whenever an invoice is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "status": { "type": "string" },
+          "liveMode": { "type": "boolean" },
+          "amountPaid": { "type": "number" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "name": { "type": "string" },
+          "businessDetails": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "address": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "website": { "type": "string" },
+              "logoUrl": { "type": "string" },
+              "customValues": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "invoiceNumber": { "type": "string" },
+          "currency": { "type": "string" },
+          "contactDetails": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "email": { "type": "string" },
+              "customFields": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryCode": { "type": "string" },
+                  "addressLine1": { "type": "string" },
+                  "addressLine2": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "postalCode": { "type": "string" }
+                }
+              },
+              "additionalEmails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "email": { "type": "string" } }
+                }
+              },
+              "companyName": { "type": "string" }
+            }
+          },
+          "issueDate": { "type": "string" },
+          "dueDate": { "type": "string" },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          },
+          "invoiceItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxes": { "type": "array" },
+                "_id": { "type": "string" },
+                "productId": { "type": "string" },
+                "priceId": { "type": "string" },
+                "currency": { "type": "string" },
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "amount": { "type": "number" }
+              }
+            }
+          },
+          "total": { "type": "number" },
+          "title": { "type": "string" },
+          "amountDue": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "totalSummary": {
+            "type": "object",
+            "properties": {
+              "subTotal": { "type": "number" },
+              "discount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "example": {
+        "_id": "6578278e879ad2646715ba9c",
+        "status": "delete",
+        "liveMode": false,
+        "amountPaid": 0,
+        "altId": "6578278e879ad2646715ba9c",
+        "altType": "location",
+        "name": "New Invoice",
+        "businessDetails": {
+          "name": "ABC Corp.",
+          "address": "9931 Beechwood, TX",
+          "phoneNo": "+1-214-559-6993",
+          "website": "wwww.example.com",
+          "logoUrl": "https://example.com/logo.png",
+          "customValues": ["string"]
+        },
+        "invoiceNumber": "19",
+        "currency": "USD",
+        "contactDetails": {
+          "id": "6578278e879ad2646715ba9c",
+          "phoneNo": "+1-214-559-6993",
+          "email": "alex@example.com",
+          "customFields": ["string"],
+          "name": "Alex",
+          "address": {
+            "countryCode": "US",
+            "addressLine1": "9931 Beechwood",
+            "addressLine2": "Beechwood",
+            "city": "St. Houston",
+            "state": "TX",
+            "postalCode": "559-6993"
+          },
+          "additionalEmails": [{ "email": "alex@example.com" }],
+          "companyName": "ABC Corp."
+        },
+        "issueDate": "2023-01-01",
+        "dueDate": "2023-01-01",
+        "discount": { "type": "percentage", "value": 10 },
+        "invoiceItems": [
+          {
+            "taxes": [],
+            "_id": "c6tZZU0rJBf30ZXx9Gli",
+            "productId": "c6tZZU0rJBf30ZXx9Gli",
+            "priceId": "c6tZZU0rJBf30ZXx9Gli",
+            "currency": "USD",
+            "name": "Macbook Pro",
+            "qty": 1,
+            "amount": 999
+          }
+        ],
+        "total": 999,
+        "title": "INVOICE",
+        "amountDue": 999,
+        "createdAt": "2023-12-12T09:27:42.355Z",
+        "updatedAt": "2023-12-12T09:27:42.355Z",
+        "totalSummary": { "subTotal": 999, "discount": 0 }
+      }
+    },
+    {
+      "event": "InvoicePaid",
+      "source": "docs/webhook events/InvoicePaid.md",
+      "title": "Invoice",
+      "description": "Called whenever an invoice is paid",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "status": { "type": "string" },
+          "liveMode": { "type": "boolean" },
+          "amountPaid": { "type": "number" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "name": { "type": "string" },
+          "businessDetails": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "address": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "website": { "type": "string" },
+              "logoUrl": { "type": "string" },
+              "customValues": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "invoiceNumber": { "type": "string" },
+          "currency": { "type": "string" },
+          "contactDetails": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "email": { "type": "string" },
+              "customFields": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryCode": { "type": "string" },
+                  "addressLine1": { "type": "string" },
+                  "addressLine2": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "postalCode": { "type": "string" }
+                }
+              },
+              "additionalEmails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "email": { "type": "string" } }
+                }
+              },
+              "companyName": { "type": "string" }
+            }
+          },
+          "issueDate": { "type": "string" },
+          "dueDate": { "type": "string" },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          },
+          "invoiceItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxes": { "type": "array" },
+                "_id": { "type": "string" },
+                "productId": { "type": "string" },
+                "priceId": { "type": "string" },
+                "currency": { "type": "string" },
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "amount": { "type": "number" }
+              }
+            }
+          },
+          "total": { "type": "number" },
+          "title": { "type": "string" },
+          "amountDue": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "totalSummary": {
+            "type": "object",
+            "properties": {
+              "subTotal": { "type": "number" },
+              "discount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "example": {
+        "_id": "6578278e879ad2646715ba9c",
+        "status": "paid",
+        "liveMode": false,
+        "amountPaid": 999,
+        "altId": "6578278e879ad2646715ba9c",
+        "altType": "location",
+        "name": "New Invoice",
+        "businessDetails": {
+          "name": "ABC Corp.",
+          "address": "9931 Beechwood, TX",
+          "phoneNo": "+1-214-559-6993",
+          "website": "wwww.example.com",
+          "logoUrl": "https://example.com/logo.png",
+          "customValues": ["string"]
+        },
+        "invoiceNumber": "19",
+        "currency": "USD",
+        "contactDetails": {
+          "id": "6578278e879ad2646715ba9c",
+          "phoneNo": "+1-214-559-6993",
+          "email": "alex@example.com",
+          "customFields": ["string"],
+          "name": "Alex",
+          "address": {
+            "countryCode": "US",
+            "addressLine1": "9931 Beechwood",
+            "addressLine2": "Beechwood",
+            "city": "St. Houston",
+            "state": "TX",
+            "postalCode": "559-6993"
+          },
+          "additionalEmails": [{ "email": "alex@example.com" }],
+          "companyName": "ABC Corp."
+        },
+        "issueDate": "2023-01-01",
+        "dueDate": "2023-01-01",
+        "discount": { "type": "percentage", "value": 10 },
+        "invoiceItems": [
+          {
+            "taxes": [],
+            "_id": "c6tZZU0rJBf30ZXx9Gli",
+            "productId": "c6tZZU0rJBf30ZXx9Gli",
+            "priceId": "c6tZZU0rJBf30ZXx9Gli",
+            "currency": "USD",
+            "name": "Macbook Pro",
+            "qty": 1,
+            "amount": 999
+          }
+        ],
+        "total": 999,
+        "title": "INVOICE",
+        "amountDue": 0,
+        "createdAt": "2023-12-12T09:27:42.355Z",
+        "updatedAt": "2023-12-12T09:27:42.355Z",
+        "totalSummary": { "subTotal": 999, "discount": 0 }
+      }
+    },
+    {
+      "event": "InvoicePartiallyPaid",
+      "source": "docs/webhook events/InvoicePartiallyPaid.md",
+      "title": "Invoice",
+      "description": "Called whenever an invoice is partially paid",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "status": { "type": "string" },
+          "liveMode": { "type": "boolean" },
+          "amountPaid": { "type": "number" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "name": { "type": "string" },
+          "businessDetails": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "address": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "website": { "type": "string" },
+              "logoUrl": { "type": "string" },
+              "customValues": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "invoiceNumber": { "type": "string" },
+          "currency": { "type": "string" },
+          "contactDetails": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "email": { "type": "string" },
+              "customFields": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryCode": { "type": "string" },
+                  "addressLine1": { "type": "string" },
+                  "addressLine2": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "postalCode": { "type": "string" }
+                }
+              },
+              "additionalEmails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "email": { "type": "string" } }
+                }
+              },
+              "companyName": { "type": "string" }
+            }
+          },
+          "issueDate": { "type": "string" },
+          "dueDate": { "type": "string" },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          },
+          "invoiceItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxes": { "type": "array" },
+                "_id": { "type": "string" },
+                "productId": { "type": "string" },
+                "priceId": { "type": "string" },
+                "currency": { "type": "string" },
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "amount": { "type": "number" }
+              }
+            }
+          },
+          "total": { "type": "number" },
+          "title": { "type": "string" },
+          "amountDue": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "totalSummary": {
+            "type": "object",
+            "properties": {
+              "subTotal": { "type": "number" },
+              "discount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "example": {
+        "_id": "6578278e879ad2646715ba9c",
+        "status": "partially_paid",
+        "liveMode": false,
+        "amountPaid": 899,
+        "altId": "6578278e879ad2646715ba9c",
+        "altType": "location",
+        "name": "New Invoice",
+        "businessDetails": {
+          "name": "ABC Corp.",
+          "address": "9931 Beechwood, TX",
+          "phoneNo": "+1-214-559-6993",
+          "website": "wwww.example.com",
+          "logoUrl": "https://example.com/logo.png",
+          "customValues": ["string"]
+        },
+        "invoiceNumber": "19",
+        "currency": "USD",
+        "contactDetails": {
+          "id": "6578278e879ad2646715ba9c",
+          "phoneNo": "+1-214-559-6993",
+          "email": "alex@example.com",
+          "customFields": ["string"],
+          "name": "Alex",
+          "address": {
+            "countryCode": "US",
+            "addressLine1": "9931 Beechwood",
+            "addressLine2": "Beechwood",
+            "city": "St. Houston",
+            "state": "TX",
+            "postalCode": "559-6993"
+          },
+          "additionalEmails": [{ "email": "alex@example.com" }],
+          "companyName": "ABC Corp."
+        },
+        "issueDate": "2023-01-01",
+        "dueDate": "2023-01-01",
+        "discount": { "type": "percentage", "value": 10 },
+        "invoiceItems": [
+          {
+            "taxes": [],
+            "_id": "c6tZZU0rJBf30ZXx9Gli",
+            "productId": "c6tZZU0rJBf30ZXx9Gli",
+            "priceId": "c6tZZU0rJBf30ZXx9Gli",
+            "currency": "USD",
+            "name": "Macbook Pro",
+            "qty": 1,
+            "amount": 999
+          }
+        ],
+        "total": 999,
+        "title": "INVOICE",
+        "amountDue": 100,
+        "createdAt": "2023-12-12T09:27:42.355Z",
+        "updatedAt": "2023-12-12T09:27:42.355Z",
+        "totalSummary": { "subTotal": 999, "discount": 0 }
+      }
+    },
+    {
+      "event": "InvoiceSent",
+      "source": "docs/webhook events/InvoiceSent.md",
+      "title": "Invoice",
+      "description": "Called whenever an invoice is sent",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "status": { "type": "string" },
+          "liveMode": { "type": "boolean" },
+          "amountPaid": { "type": "number" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "name": { "type": "string" },
+          "businessDetails": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "address": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "website": { "type": "string" },
+              "logoUrl": { "type": "string" },
+              "customValues": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "invoiceNumber": { "type": "string" },
+          "currency": { "type": "string" },
+          "contactDetails": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "email": { "type": "string" },
+              "customFields": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryCode": { "type": "string" },
+                  "addressLine1": { "type": "string" },
+                  "addressLine2": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "postalCode": { "type": "string" }
+                }
+              },
+              "additionalEmails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "email": { "type": "string" } }
+                }
+              },
+              "companyName": { "type": "string" }
+            }
+          },
+          "issueDate": { "type": "string" },
+          "dueDate": { "type": "string" },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          },
+          "invoiceItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxes": { "type": "array" },
+                "_id": { "type": "string" },
+                "productId": { "type": "string" },
+                "priceId": { "type": "string" },
+                "currency": { "type": "string" },
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "amount": { "type": "number" }
+              }
+            }
+          },
+          "total": { "type": "number" },
+          "title": { "type": "string" },
+          "amountDue": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "totalSummary": {
+            "type": "object",
+            "properties": {
+              "subTotal": { "type": "number" },
+              "discount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "example": {
+        "_id": "6578278e879ad2646715ba9c",
+        "status": "sent",
+        "liveMode": false,
+        "amountPaid": 0,
+        "altId": "6578278e879ad2646715ba9c",
+        "altType": "location",
+        "name": "New Invoice",
+        "businessDetails": {
+          "name": "ABC Corp.",
+          "address": "9931 Beechwood, TX",
+          "phoneNo": "+1-214-559-6993",
+          "website": "wwww.example.com",
+          "logoUrl": "https://example.com/logo.png",
+          "customValues": ["string"]
+        },
+        "invoiceNumber": "19",
+        "currency": "USD",
+        "contactDetails": {
+          "id": "6578278e879ad2646715ba9c",
+          "phoneNo": "+1-214-559-6993",
+          "email": "alex@example.com",
+          "customFields": ["string"],
+          "name": "Alex",
+          "address": {
+            "countryCode": "US",
+            "addressLine1": "9931 Beechwood",
+            "addressLine2": "Beechwood",
+            "city": "St. Houston",
+            "state": "TX",
+            "postalCode": "559-6993"
+          },
+          "additionalEmails": [{ "email": "alex@example.com" }],
+          "companyName": "ABC Corp."
+        },
+        "issueDate": "2023-01-01",
+        "dueDate": "2023-01-01",
+        "discount": { "type": "percentage", "value": 10 },
+        "invoiceItems": [
+          {
+            "taxes": [],
+            "_id": "c6tZZU0rJBf30ZXx9Gli",
+            "productId": "c6tZZU0rJBf30ZXx9Gli",
+            "priceId": "c6tZZU0rJBf30ZXx9Gli",
+            "currency": "USD",
+            "name": "Macbook Pro",
+            "qty": 1,
+            "amount": 999
+          }
+        ],
+        "total": 999,
+        "title": "INVOICE",
+        "amountDue": 999,
+        "createdAt": "2023-12-12T09:27:42.355Z",
+        "updatedAt": "2023-12-12T09:27:42.355Z",
+        "totalSummary": { "subTotal": 999, "discount": 0 }
+      }
+    },
+    {
+      "event": "InvoiceUpdate",
+      "source": "docs/webhook events/InvoiceUpdate.md",
+      "title": "Invoice",
+      "description": "Called whenever an invoice is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "status": { "type": "string" },
+          "liveMode": { "type": "boolean" },
+          "amountPaid": { "type": "number" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "name": { "type": "string" },
+          "businessDetails": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "address": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "website": { "type": "string" },
+              "logoUrl": { "type": "string" },
+              "customValues": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "invoiceNumber": { "type": "string" },
+          "currency": { "type": "string" },
+          "contactDetails": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "email": { "type": "string" },
+              "customFields": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryCode": { "type": "string" },
+                  "addressLine1": { "type": "string" },
+                  "addressLine2": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "postalCode": { "type": "string" }
+                }
+              },
+              "additionalEmails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "email": { "type": "string" } }
+                }
+              },
+              "companyName": { "type": "string" }
+            }
+          },
+          "issueDate": { "type": "string" },
+          "dueDate": { "type": "string" },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          },
+          "invoiceItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxes": { "type": "array" },
+                "_id": { "type": "string" },
+                "productId": { "type": "string" },
+                "priceId": { "type": "string" },
+                "currency": { "type": "string" },
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "amount": { "type": "number" }
+              }
+            }
+          },
+          "total": { "type": "number" },
+          "title": { "type": "string" },
+          "amountDue": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "totalSummary": {
+            "type": "object",
+            "properties": {
+              "subTotal": { "type": "number" },
+              "discount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "example": {
+        "_id": "6578278e879ad2646715ba9c",
+        "status": "draft",
+        "liveMode": false,
+        "amountPaid": 0,
+        "altId": "6578278e879ad2646715ba9c",
+        "altType": "location",
+        "name": "New Invoice",
+        "businessDetails": {
+          "name": "ABC Corp.",
+          "address": "9931 Beechwood, TX",
+          "phoneNo": "+1-214-559-6993",
+          "website": "wwww.example.com",
+          "logoUrl": "https://example.com/logo.png",
+          "customValues": ["string"]
+        },
+        "invoiceNumber": "19",
+        "currency": "USD",
+        "contactDetails": {
+          "id": "6578278e879ad2646715ba9c",
+          "phoneNo": "+1-214-559-6993",
+          "email": "alex@example.com",
+          "customFields": ["string"],
+          "name": "Alex",
+          "address": {
+            "countryCode": "US",
+            "addressLine1": "9931 Beechwood",
+            "addressLine2": "Beechwood",
+            "city": "St. Houston",
+            "state": "TX",
+            "postalCode": "559-6993"
+          },
+          "additionalEmails": [{ "email": "alex@example.com" }],
+          "companyName": "ABC Corp."
+        },
+        "issueDate": "2023-01-01",
+        "dueDate": "2023-01-01",
+        "discount": { "type": "percentage", "value": 10 },
+        "invoiceItems": [
+          {
+            "taxes": [],
+            "_id": "c6tZZU0rJBf30ZXx9Gli",
+            "productId": "c6tZZU0rJBf30ZXx9Gli",
+            "priceId": "c6tZZU0rJBf30ZXx9Gli",
+            "currency": "USD",
+            "name": "Macbook Pro",
+            "qty": 1,
+            "amount": 999
+          }
+        ],
+        "total": 999,
+        "title": "INVOICE",
+        "amountDue": 999,
+        "createdAt": "2023-12-12T09:27:42.355Z",
+        "updatedAt": "2023-12-12T09:27:42.355Z",
+        "totalSummary": { "subTotal": 999, "discount": 0 }
+      }
+    },
+    {
+      "event": "InvoiceVoid",
+      "source": "docs/webhook events/InvoiceVoid.md",
+      "title": "Invoice",
+      "description": "Called whenever an invoice is marked as void",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "status": { "type": "string" },
+          "liveMode": { "type": "boolean" },
+          "amountPaid": { "type": "number" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "name": { "type": "string" },
+          "businessDetails": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "address": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "website": { "type": "string" },
+              "logoUrl": { "type": "string" },
+              "customValues": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "invoiceNumber": { "type": "string" },
+          "currency": { "type": "string" },
+          "contactDetails": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "phoneNo": { "type": "string" },
+              "email": { "type": "string" },
+              "customFields": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryCode": { "type": "string" },
+                  "addressLine1": { "type": "string" },
+                  "addressLine2": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "postalCode": { "type": "string" }
+                }
+              },
+              "additionalEmails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "email": { "type": "string" } }
+                }
+              },
+              "companyName": { "type": "string" }
+            }
+          },
+          "issueDate": { "type": "string" },
+          "dueDate": { "type": "string" },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          },
+          "invoiceItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxes": { "type": "array" },
+                "_id": { "type": "string" },
+                "productId": { "type": "string" },
+                "priceId": { "type": "string" },
+                "currency": { "type": "string" },
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "amount": { "type": "number" }
+              }
+            }
+          },
+          "total": { "type": "number" },
+          "title": { "type": "string" },
+          "amountDue": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "totalSummary": {
+            "type": "object",
+            "properties": {
+              "subTotal": { "type": "number" },
+              "discount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "example": {
+        "_id": "6578278e879ad2646715ba9c",
+        "status": "void",
+        "liveMode": false,
+        "amountPaid": 0,
+        "altId": "6578278e879ad2646715ba9c",
+        "altType": "location",
+        "name": "New Invoice",
+        "businessDetails": {
+          "name": "ABC Corp.",
+          "address": "9931 Beechwood, TX",
+          "phoneNo": "+1-214-559-6993",
+          "website": "wwww.example.com",
+          "logoUrl": "https://example.com/logo.png",
+          "customValues": ["string"]
+        },
+        "invoiceNumber": "19",
+        "currency": "USD",
+        "contactDetails": {
+          "id": "6578278e879ad2646715ba9c",
+          "phoneNo": "+1-214-559-6993",
+          "email": "alex@example.com",
+          "customFields": ["string"],
+          "name": "Alex",
+          "address": {
+            "countryCode": "US",
+            "addressLine1": "9931 Beechwood",
+            "addressLine2": "Beechwood",
+            "city": "St. Houston",
+            "state": "TX",
+            "postalCode": "559-6993"
+          },
+          "additionalEmails": [{ "email": "alex@example.com" }],
+          "companyName": "ABC Corp."
+        },
+        "issueDate": "2023-01-01",
+        "dueDate": "2023-01-01",
+        "discount": { "type": "percentage", "value": 10 },
+        "invoiceItems": [
+          {
+            "taxes": [],
+            "_id": "c6tZZU0rJBf30ZXx9Gli",
+            "productId": "c6tZZU0rJBf30ZXx9Gli",
+            "priceId": "c6tZZU0rJBf30ZXx9Gli",
+            "currency": "USD",
+            "name": "Macbook Pro",
+            "qty": 1,
+            "amount": 999
+          }
+        ],
+        "total": 999,
+        "title": "INVOICE",
+        "amountDue": 999,
+        "createdAt": "2023-12-12T09:27:42.355Z",
+        "updatedAt": "2023-12-12T09:27:42.355Z",
+        "totalSummary": { "subTotal": 999, "discount": 0 }
+      }
+    },
+    {
+      "event": "LCEmailStats",
+      "source": "docs/webhook events/LCEmailStats.md",
+      "title": "LC Email",
+      "description": "Called whenever an email is sent, gives the statistics of the said email.",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "LCEmailStats",
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "companyId": { "type": "string" },
+          "webhookPayload": {
+            "type": "object",
+            "properties": {
+              "event": { "type": "string" },
+              "id": { "type": "string" },
+              "timestamp": { "type": "integer" },
+              "flags": {
+                "type": "object",
+                "properties": {
+                  "is-authenticated": { "type": "boolean" },
+                  "is-routed": { "type": "boolean" },
+                  "is-big": { "type": "boolean" },
+                  "is-system-test": { "type": "boolean" },
+                  "is-test-mode": { "type": "boolean" }
+                }
+              },
+              "message": {
+                "type": "object",
+                "properties": {
+                  "attachments": { "type": "array" },
+                  "headers": {
+                    "type": "object",
+                    "properties": {
+                      "message-id": { "type": "string" },
+                      "from": { "type": "string" },
+                      "to": { "type": "string" }
+                    }
+                  },
+                  "size": { "type": "integer" }
+                }
+              },
+              "log-level": { "type": "string" },
+              "recipient": { "type": "string" },
+              "recipient-domain": { "type": "string" },
+              "tags": { "type": "array" },
+              "recipient-provider": { "type": "string" },
+              "campaigns": { "type": "array" },
+              "delivery-status": {
+                "type": "object",
+                "properties": {
+                  "attempt-no": { "type": "integer" },
+                  "code": { "type": "integer" },
+                  "message": { "type": "string" },
+                  "description": { "type": "string" },
+                  "session-seconds": { "type": "number" },
+                  "enhanced-code": { "type": "string" },
+                  "mx-host": { "type": "string" },
+                  "utf8": { "type": "boolean" },
+                  "i-first-delivery-attempt-seconds": { "type": "number" }
+                }
+              },
+              "envelope": {
+                "type": "object",
+                "properties": {
+                  "sender": { "type": "string" },
+                  "targets": { "type": "string" },
+                  "transport": { "type": "string" },
+                  "sending-ip": { "type": "string" },
+                  "i-ip-pool-id": { "type": "string" },
+                  "i-ip-pool-name": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "LCEmailStats",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "companyId": "ve9EPM428h8vShlRW1KT",
+        "webhookPayload": {
+          "event": "delivered",
+          "id": "ve9EPM428h8vShlRW1KT",
+          "timestamp": 1714032441,
+          "flags": {
+            "is-authenticated": true,
+            "is-routed": false,
+            "is-big": false,
+            "is-system-test": false,
+            "is-test-mode": false
+          },
+          "message": {
+            "attachments": [],
+            "headers": {
+              "message-id": "<message-id>",
+              "from": "Aaditya Chakravarty <dummy@example.com>",
+              "to": "test@example.com"
+            },
+            "size": 1725
+          },
+          "log-level": "info",
+          "recipient": "test@example.com",
+          "recipient-domain": "example.com",
+          "tags": ["loc_ve9EPM428h8vShlRW1KT", "com_ve9EPM428h8vShlRW1KT", "et_other"],
+          "recipient-provider": "Other",
+          "campaigns": [],
+          "delivery-status": {
+            "attempt-no": 1,
+            "code": 250,
+            "message": "OK",
+            "description": "",
+            "session-seconds": 0.087,
+            "enhanced-code": "",
+            "mx-host": "mail.example.com",
+            "utf8": true,
+            "i-first-delivery-attempt-seconds": 0.047
+          },
+          "envelope": {
+            "sender": "<sender-id>",
+            "targets": "test@example.com",
+            "transport": "smtp",
+            "sending-ip": "127.0.0.1",
+            "i-ip-pool-id": "65cc66e77a4d4f63649d394c",
+            "i-ip-pool-name": "<pool-name>"
+          }
+        }
+      }
+    },
+    {
+      "event": "LocationCreate",
+      "source": "docs/webhook events/LocationCreate.md",
+      "title": "Location",
+      "description": "Called whenever a location is created.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "stripeProductId": { "type": "string" },
+          "companyId": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "LocationCreate",
+        "id": "ve9EPM428h8vShlRW1KT",
+        "companyId": "otg8dTQqGLh3Q6iQI55w",
+        "name": "Loram ipsum",
+        "email": "mailer@example.com",
+        "stripeProductId": "prod_xyz123abc"
+      }
+    },
+    {
+      "event": "LocationUpdate",
+      "source": "docs/webhook events/LocationUpdate.md",
+      "title": "Location",
+      "description": "Called whenever a location is updated.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "stripeProductId": { "type": "string" },
+          "companyId": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "LocationUpdate",
+        "id": "ve9EPM428h8vShlRW1KT",
+        "companyId": "otg8dTQqGLh3Q6iQI55w",
+        "name": "Loram ipsum",
+        "email": "mailer@example.com",
+        "stripeProductId": "prod_xyz123abc"
+      }
+    },
+    {
+      "event": "NoteCreate",
+      "source": "docs/webhook events/NoteCreate.md",
+      "title": "Note",
+      "description": "Called whenever a note is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "body": { "type": "string" },
+          "contactId": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "NoteCreate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "otg8dTQqGLh3Q6iQI55w",
+        "body": "Loram ipsum",
+        "contactId": "CWBf1PR9LvvBkcYqiXlc",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "NoteDelete",
+      "source": "docs/webhook events/NoteDelete.md",
+      "title": "Note",
+      "description": "Called whenever a note is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "body": { "type": "string" },
+          "contactId": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "NoteDelete",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "otg8dTQqGLh3Q6iQI55w",
+        "body": "Loram ipsum",
+        "contactId": "CWBf1PR9LvvBkcYqiXlc",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "NoteUpdate",
+      "source": "docs/webhook events/NoteUpdate.md",
+      "title": "Note",
+      "description": "Called whenever a note is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "body": { "type": "string" },
+          "contactId": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "NoteUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "otg8dTQqGLh3Q6iQI55w",
+        "body": "Loram ipsum",
+        "contactId": "CWBf1PR9LvvBkcYqiXlc",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "ObjectSchemaCreate",
+      "source": "docs/webhook events/ObjectSchemaCreate.md",
+      "title": "Object Schema Create",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "ObjectSchemaUpdate",
+      "source": "docs/webhook events/ObjectSchemaUpdate.md",
+      "title": "Update Custom Object",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "OpportunityAssignedToUpdate",
+      "source": "docs/webhook events/OpportunityAssignedToUpdate.md",
+      "title": "Opportunity",
+      "description": "Called whenever an opportunity's AssignedTo field is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "contactId": { "type": "string" },
+          "monetaryValue": { "type": "number" },
+          "name": { "type": "string" },
+          "pipelineId": { "type": "string" },
+          "pipelineStageId": { "type": "string" },
+          "source": { "type": "string" },
+          "status": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OpportunityAssignedToUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "wWhVuzqpRuOA1ZVWi4FC",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "contactId": "cJAWDskpkJHbRbhAT7bs",
+        "monetaryValue": 40,
+        "name": "Loram ipsu",
+        "pipelineId": "VDm7RPYC2GLUvdpKmBfC",
+        "pipelineStageId": "e93ba61a-53b3-45e7-985a-c7732dbcdb69",
+        "source": "Loram ipsu",
+        "status": "open",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "OpportunityCreate",
+      "source": "docs/webhook events/OpportunityCreate.md",
+      "title": "Opportunity",
+      "description": "Called whenever an opportunity is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "contactId": { "type": "string" },
+          "monetaryValue": { "type": "number" },
+          "name": { "type": "string" },
+          "pipelineId": { "type": "string" },
+          "pipelineStageId": { "type": "string" },
+          "source": { "type": "string" },
+          "status": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OpportunityCreate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "wWhVuzqpRuOA1ZVWi4FC",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "contactId": "cJAWDskpkJHbRbhAT7bs",
+        "monetaryValue": 40,
+        "name": "Loram ipsu",
+        "pipelineId": "VDm7RPYC2GLUvdpKmBfC",
+        "pipelineStageId": "e93ba61a-53b3-45e7-985a-c7732dbcdb69",
+        "source": "Loram ipsu",
+        "status": "open",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "OpportunityDelete",
+      "source": "docs/webhook events/OpportunityDelete.md",
+      "title": "Opportunity",
+      "description": "Called whenever an opportunity is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "contactId": { "type": "string" },
+          "monetaryValue": { "type": "number" },
+          "name": { "type": "string" },
+          "pipelineId": { "type": "string" },
+          "pipelineStageId": { "type": "string" },
+          "source": { "type": "string" },
+          "status": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OpportunityDelete",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "wWhVuzqpRuOA1ZVWi4FC",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "contactId": "cJAWDskpkJHbRbhAT7bs",
+        "monetaryValue": 40,
+        "name": "Loram ipsu",
+        "pipelineId": "VDm7RPYC2GLUvdpKmBfC",
+        "pipelineStageId": "e93ba61a-53b3-45e7-985a-c7732dbcdb69",
+        "source": "Loram ipsu",
+        "status": "open",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "OpportunityMonetaryValueUpdate",
+      "source": "docs/webhook events/OpportunityMonetaryValueUpdate.md",
+      "title": "Opportunity",
+      "description": "Called whenever an opportunity's monetary value field is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "contactId": { "type": "string" },
+          "monetaryValue": { "type": "number" },
+          "name": { "type": "string" },
+          "pipelineId": { "type": "string" },
+          "pipelineStageId": { "type": "string" },
+          "source": { "type": "string" },
+          "status": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OpportunityMonetaryValueUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "wWhVuzqpRuOA1ZVWi4FC",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "contactId": "cJAWDskpkJHbRbhAT7bs",
+        "monetaryValue": 40,
+        "name": "Loram ipsu",
+        "pipelineId": "VDm7RPYC2GLUvdpKmBfC",
+        "pipelineStageId": "e93ba61a-53b3-45e7-985a-c7732dbcdb69",
+        "source": "Loram ipsu",
+        "status": "open",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "OpportunityStageUpdate",
+      "source": "docs/webhook events/OpportunityStageUpdate.md",
+      "title": "Opportunity",
+      "description": "Called whenever an opportunity's stage field is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "contactId": { "type": "string" },
+          "monetaryValue": { "type": "number" },
+          "name": { "type": "string" },
+          "pipelineId": { "type": "string" },
+          "pipelineStageId": { "type": "string" },
+          "source": { "type": "string" },
+          "status": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OpportunityStageUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "wWhVuzqpRuOA1ZVWi4FC",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "contactId": "cJAWDskpkJHbRbhAT7bs",
+        "monetaryValue": 40,
+        "name": "Loram ipsu",
+        "pipelineId": "VDm7RPYC2GLUvdpKmBfC",
+        "pipelineStageId": "e93ba61a-53b3-45e7-985a-c7732dbcdb69",
+        "source": "Loram ipsu",
+        "status": "open",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "OpportunityStatusUpdate",
+      "source": "docs/webhook events/OpportunityStatusUpdate.md",
+      "title": "Opportunity",
+      "description": "Called whenever an opportunity's status field is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "contactId": { "type": "string" },
+          "monetaryValue": { "type": "number" },
+          "name": { "type": "string" },
+          "pipelineId": { "type": "string" },
+          "pipelineStageId": { "type": "string" },
+          "source": { "type": "string" },
+          "status": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OpportunityStatusUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "wWhVuzqpRuOA1ZVWi4FC",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "contactId": "cJAWDskpkJHbRbhAT7bs",
+        "monetaryValue": 40,
+        "name": "Loram ipsu",
+        "pipelineId": "VDm7RPYC2GLUvdpKmBfC",
+        "pipelineStageId": "e93ba61a-53b3-45e7-985a-c7732dbcdb69",
+        "source": "Loram ipsu",
+        "status": "open",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "OpportunityUpdate",
+      "source": "docs/webhook events/OpportunityUpdate.md",
+      "title": "Opportunity",
+      "description": "Called whenever an opportunity is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "contactId": { "type": "string" },
+          "monetaryValue": { "type": "number" },
+          "name": { "type": "string" },
+          "pipelineId": { "type": "string" },
+          "pipelineStageId": { "type": "string" },
+          "source": { "type": "string" },
+          "status": { "type": "string" },
+          "dateAdded": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OpportunityUpdate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "wWhVuzqpRuOA1ZVWi4FC",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "contactId": "cJAWDskpkJHbRbhAT7bs",
+        "monetaryValue": 40,
+        "name": "Loram ipsu",
+        "pipelineId": "VDm7RPYC2GLUvdpKmBfC",
+        "pipelineStageId": "e93ba61a-53b3-45e7-985a-c7732dbcdb69",
+        "source": "Loram ipsu",
+        "status": "open",
+        "dateAdded": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "OrderCreate",
+      "source": "docs/webhook events/OrderCreate.md",
+      "title": "Order",
+      "description": "Called whenever an order is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "_id": { "type": "string" },
+          "contactId": { "type": "string" },
+          "contactSnapshot": {
+            "type": "object",
+            "properties": {
+              "locationId": { "type": "string" },
+              "id": { "type": "string" },
+              "address1": { "type": "string" },
+              "city": { "type": "string" },
+              "companyName": { "type": "string" },
+              "country": { "type": "string" },
+              "source": { "type": "string" },
+              "dateAdded": { "type": "string" },
+              "dateOfBirth": { "type": "string" },
+              "dnd": { "type": "boolean" },
+              "email": { "type": "string" },
+              "name": { "type": "string" },
+              "firstName": { "type": "string" },
+              "lastName": { "type": "string" },
+              "phone": { "type": "string" },
+              "postalCode": { "type": "string" },
+              "state": { "type": "string" },
+              "tags": { "type": "array" },
+              "website": { "type": "string" },
+              "attachments": { "type": "array" },
+              "assignedTo": { "type": "string" }
+            }
+          },
+          "status": { "type": "string" },
+          "fulfillmentStatus": { "type": "string" },
+          "currency": { "type": "string" },
+          "amount": { "type": "number" },
+          "liveMode": { "type": "boolean" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "product": { "type": "object" },
+                "price": { "type": "object" }
+              }
+            }
+          },
+          "amountSummary": {
+            "type": "object",
+            "properties": {
+              "discount": { "type": "number" },
+              "shipping": { "type": "number" },
+              "subtotal": { "type": "number" },
+              "tax": { "type": "number" }
+            }
+          },
+          "taxSummary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": { "type": "string" },
+                "amount": { "type": "number" },
+                "calculation": { "type": "string" },
+                "name": { "type": "string" },
+                "rate": { "type": "number" }
+              }
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "subType": { "type": "string" },
+              "meta": { "type": "object" }
+            }
+          },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OrderCreate",
+        "locationId": "Z4Bxl8J4SaPEPLq9IQ8g",
+        "_id": "660ed43bfdf9fc05a0de7a40",
+        "altId": "Z4Bxl8J4SaPEPLq9IQ8g",
+        "altType": "location",
+        "status": "pending",
+        "taxSummary": [
+          {
+            "_id": "63770f5cecf298787c752075",
+            "name": "10%",
+            "calculation": "exclusive",
+            "rate": 10,
+            "amount": 12.1
+          }
+        ],
+        "fulfillmentStatus": "unfulfilled",
+        "contactId": "ff2JstbQJfRuofXzeT0M",
+        "currency": "USD",
+        "amount": 150.1,
+        "liveMode": false,
+        "amountSummary": { "subtotal": 138, "discount": 0, "tax": 12.1, "shipping": 0 },
+        "source": {
+          "type": "website",
+          "subType": "store",
+          "id": "nohc1pPZJlpZTpxJfLCp",
+          "name": "Ecom Store",
+          "meta": {
+            "stepId": "dca58f2c-943b-4a92-b591-5d79f37df0a1",
+            "pageId": "IoJJMciJZIRBSzGZcjl4",
+            "domain": "ghl.shareef.me",
+            "pageUrl": "/checkout"
+          }
+        },
+        "createdAt": "2024-04-04T16:24:27.036Z",
+        "updatedAt": "2024-04-04T16:24:31.297Z",
+        "contactSnapshot": {
+          "id": "ff2JstbQJfRuofXzeT0M",
+          "locationId": "Z4Bxl8J4SaPEPLq9IQ8g",
+          "firstName": "Maxwell",
+          "lastName": "Schmidt",
+          "email": "limof@mailinator.com",
+          "phone": "+2389372075506",
+          "dnd": false,
+          "source": "Ecom Store",
+          "address1": "Velit consequuntur ",
+          "city": "Eius eveniet provid",
+          "state": "Ea provident volupt",
+          "postalCode": "61131",
+          "tags": [],
+          "country": "CV",
+          "dateAdded": "2024-04-04T16:24:21.375Z"
+        },
+        "items": [
+          {
+            "name": "Men's classic tee - XL / Charcoal",
+            "qty": 1,
+            "product": {
+              "_id": "660ed1ff95e1dc88d5b0d346",
+              "name": "Men's classic tee",
+              "availableInStore": true,
+              "taxes": [],
+              "variants": [
+                {
+                  "id": "6xcxyf3ufjm",
+                  "name": "Size",
+                  "options": [
+                    { "id": "pq72pwv2dd", "name": "S" },
+                    { "id": "oxyrtisnrch", "name": "M" },
+                    { "id": "e90dmjc49m7", "name": "L" },
+                    { "id": "100p40ngait", "name": "XL" },
+                    { "id": "1g0zjf4s57l", "name": "2XL" },
+                    { "id": "x3qgphbudz", "name": "3XL" },
+                    { "id": "4spdojmrhlh", "name": "4XL" }
+                  ]
+                },
+                {
+                  "id": "06to66ownvc5",
+                  "name": "Color",
+                  "options": [
+                    { "id": "7uhq7ky7bge", "name": "Maroon" },
+                    { "id": "qeac76hvr1c", "name": "Black" },
+                    { "id": "yhgmvthkf49", "name": "Navy" },
+                    { "id": "plg4elfx0sq", "name": "Red" },
+                    { "id": "7etdl015ljk", "name": "Royal" },
+                    { "id": "yj1jw5ga5bk", "name": "Charcoal" }
+                  ]
+                }
+              ]
+            },
+            "price": {
+              "_id": "660ed20095e1dcd37bb0d392",
+              "name": "XL / Charcoal",
+              "type": "one_time",
+              "currency": "USD",
+              "amount": 17,
+              "variantOptionIds": ["100p40ngait", "yj1jw5ga5bk"]
+            }
+          },
+          {
+            "name": "Tshirt - Green / S",
+            "qty": 1,
+            "product": {
+              "_id": "64f84dea1e2c5ae21f0714dd",
+              "name": "Tshirt",
+              "description": "<p>Here is the <span style=\"color: rgb(206, 145, 120); color: rgb(206, 145, 120)\">onDeleteMedia</span></p>",
+              "availableInStore": true,
+              "taxes": [
+                {
+                  "_id": "63770f5cecf298787c752075",
+                  "calculation": "exclusive",
+                  "deleted": false,
+                  "altId": "Z4Bxl8J4SaPEPLq9IQ8g",
+                  "altType": "location",
+                  "name": "10%",
+                  "rate": 10,
+                  "createdAt": "2022-11-18T04:51:40.067Z",
+                  "updatedAt": "2022-11-18T04:51:40.067Z",
+                  "__v": 0
+                }
+              ],
+              "variants": [
+                {
+                  "id": "mhpty6azkx",
+                  "name": "Color",
+                  "options": [
+                    { "id": "j1kri8rtkz", "name": "Red" },
+                    { "id": "qxd87i00pr", "name": "Green" }
+                  ]
+                },
+                {
+                  "id": "14ykjkzqfe",
+                  "name": "Size",
+                  "options": [{ "id": "nk794wey5a", "name": "S" }]
+                }
+              ]
+            },
+            "price": {
+              "_id": "64f84dec1e2c5ae21f0714e1",
+              "name": "Green / S",
+              "type": "one_time",
+              "currency": "USD",
+              "amount": 121,
+              "variantOptionIds": ["qxd87i00pr", "nk794wey5a"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "event": "OrderStatusUpdate",
+      "source": "docs/webhook events/OrderStatusUpdate.md",
+      "title": "Order",
+      "description": "Called whenever an order's status field updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "altId": { "type": "string" },
+          "altType": { "type": "string" },
+          "_id": { "type": "string" },
+          "contactId": { "type": "string" },
+          "contactSnapshot": {
+            "type": "object",
+            "properties": {
+              "locationId": { "type": "string" },
+              "id": { "type": "string" },
+              "address1": { "type": "string" },
+              "city": { "type": "string" },
+              "companyName": { "type": "string" },
+              "country": { "type": "string" },
+              "source": { "type": "string" },
+              "dateAdded": { "type": "string" },
+              "dateOfBirth": { "type": "string" },
+              "dnd": { "type": "boolean" },
+              "email": { "type": "string" },
+              "name": { "type": "string" },
+              "firstName": { "type": "string" },
+              "lastName": { "type": "string" },
+              "phone": { "type": "string" },
+              "postalCode": { "type": "string" },
+              "state": { "type": "string" },
+              "tags": { "type": "array" },
+              "website": { "type": "string" },
+              "attachments": { "type": "array" },
+              "assignedTo": { "type": "string" }
+            }
+          },
+          "status": { "type": "string" },
+          "fulfillmentStatus": { "type": "string" },
+          "currency": { "type": "string" },
+          "amount": { "type": "number" },
+          "liveMode": { "type": "boolean" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "qty": { "type": "number" },
+                "product": { "type": "object" },
+                "price": { "type": "object" }
+              }
+            }
+          },
+          "amountSummary": {
+            "type": "object",
+            "properties": {
+              "discount": { "type": "number" },
+              "shipping": { "type": "number" },
+              "subtotal": { "type": "number" },
+              "tax": { "type": "number" }
+            }
+          },
+          "taxSummary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": { "type": "string" },
+                "amount": { "type": "number" },
+                "calculation": { "type": "string" },
+                "name": { "type": "string" },
+                "rate": { "type": "number" }
+              }
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "subType": { "type": "string" },
+              "meta": { "type": "object" }
+            }
+          },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "OrderStatusUpdate",
+        "locationId": "Z4Bxl8J4SaPEPLq9IQ8g",
+        "_id": "660ed43bfdf9fc05a0de7a40",
+        "altId": "Z4Bxl8J4SaPEPLq9IQ8g",
+        "altType": "location",
+        "status": "completed",
+        "taxSummary": [
+          {
+            "_id": "63770f5cecf298787c752075",
+            "name": "10%",
+            "calculation": "exclusive",
+            "rate": 10,
+            "amount": 12.1
+          }
+        ],
+        "fulfillmentStatus": "unfulfilled",
+        "contactId": "ff2JstbQJfRuofXzeT0M",
+        "currency": "USD",
+        "amount": 150.1,
+        "liveMode": false,
+        "amountSummary": { "subtotal": 138, "discount": 0, "tax": 12.1, "shipping": 0 },
+        "source": {
+          "type": "website",
+          "subType": "store",
+          "id": "nohc1pPZJlpZTpxJfLCp",
+          "name": "Ecom Store",
+          "meta": {
+            "stepId": "dca58f2c-943b-4a92-b591-5d79f37df0a1",
+            "pageId": "IoJJMciJZIRBSzGZcjl4",
+            "domain": "ghl.shareef.me",
+            "pageUrl": "/checkout"
+          }
+        },
+        "createdAt": "2024-04-04T16:24:27.036Z",
+        "updatedAt": "2024-04-04T16:24:31.297Z",
+        "contactSnapshot": {
+          "id": "ff2JstbQJfRuofXzeT0M",
+          "locationId": "Z4Bxl8J4SaPEPLq9IQ8g",
+          "firstName": "Maxwell",
+          "lastName": "Schmidt",
+          "email": "limof@mailinator.com",
+          "phone": "+2389372075506",
+          "dnd": false,
+          "source": "Ecom Store",
+          "address1": "Velit consequuntur ",
+          "city": "Eius eveniet provid",
+          "state": "Ea provident volupt",
+          "postalCode": "61131",
+          "tags": [],
+          "country": "CV",
+          "dateAdded": "2024-04-04T16:24:21.375Z"
+        },
+        "items": [
+          {
+            "name": "Men's classic tee - XL / Charcoal",
+            "qty": 1,
+            "product": {
+              "_id": "660ed1ff95e1dc88d5b0d346",
+              "name": "Men's classic tee",
+              "availableInStore": true,
+              "taxes": [],
+              "variants": [
+                {
+                  "id": "6xcxyf3ufjm",
+                  "name": "Size",
+                  "options": [
+                    { "id": "pq72pwv2dd", "name": "S" },
+                    { "id": "oxyrtisnrch", "name": "M" },
+                    { "id": "e90dmjc49m7", "name": "L" },
+                    { "id": "100p40ngait", "name": "XL" },
+                    { "id": "1g0zjf4s57l", "name": "2XL" },
+                    { "id": "x3qgphbudz", "name": "3XL" },
+                    { "id": "4spdojmrhlh", "name": "4XL" }
+                  ]
+                },
+                {
+                  "id": "06to66ownvc5",
+                  "name": "Color",
+                  "options": [
+                    { "id": "7uhq7ky7bge", "name": "Maroon" },
+                    { "id": "qeac76hvr1c", "name": "Black" },
+                    { "id": "yhgmvthkf49", "name": "Navy" },
+                    { "id": "plg4elfx0sq", "name": "Red" },
+                    { "id": "7etdl015ljk", "name": "Royal" },
+                    { "id": "yj1jw5ga5bk", "name": "Charcoal" }
+                  ]
+                }
+              ]
+            },
+            "price": {
+              "_id": "660ed20095e1dcd37bb0d392",
+              "name": "XL / Charcoal",
+              "type": "one_time",
+              "currency": "USD",
+              "amount": 17,
+              "variantOptionIds": ["100p40ngait", "yj1jw5ga5bk"]
+            }
+          },
+          {
+            "name": "Tshirt - Green / S",
+            "qty": 1,
+            "product": {
+              "_id": "64f84dea1e2c5ae21f0714dd",
+              "name": "Tshirt",
+              "description": "<p>Here is the <span style=\"color: rgb(206, 145, 120); color: rgb(206, 145, 120)\">onDeleteMedia</span></p>",
+              "availableInStore": true,
+              "taxes": [
+                {
+                  "_id": "63770f5cecf298787c752075",
+                  "calculation": "exclusive",
+                  "deleted": false,
+                  "altId": "Z4Bxl8J4SaPEPLq9IQ8g",
+                  "altType": "location",
+                  "name": "10%",
+                  "rate": 10,
+                  "createdAt": "2022-11-18T04:51:40.067Z",
+                  "updatedAt": "2022-11-18T04:51:40.067Z",
+                  "__v": 0
+                }
+              ],
+              "variants": [
+                {
+                  "id": "mhpty6azkx",
+                  "name": "Color",
+                  "options": [
+                    { "id": "j1kri8rtkz", "name": "Red" },
+                    { "id": "qxd87i00pr", "name": "Green" }
+                  ]
+                },
+                {
+                  "id": "14ykjkzqfe",
+                  "name": "Size",
+                  "options": [{ "id": "nk794wey5a", "name": "S" }]
+                }
+              ]
+            },
+            "price": {
+              "_id": "64f84dec1e2c5ae21f0714e1",
+              "name": "Green / S",
+              "type": "one_time",
+              "currency": "USD",
+              "amount": 121,
+              "variantOptionIds": ["qxd87i00pr", "nk794wey5a"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "event": "OutboundMessage",
+      "source": "docs/webhook events/OutboundMessage.md",
+      "title": "OutboundMessage",
+      "description": "Called whenever a user sends a message to a contact.",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "PLAN_CHANGE",
+      "source": "docs/webhook events/PlanChange.md",
+      "title": "Plan Change",
+      "description": "Called whenever user changes the plan for a paid app.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "example": "PLAN_CHANGE" },
+          "appId": { "type": "string", "example": "ve9EPM428h8vShlRW1KT" },
+          "locationId": { "type": "string", "example": "otg8dTQqGLh3Q6iQI55w" },
+          "companyId": { "type": "string", "example": "otg8dTQqGLh3Q6iQI55w" },
+          "userId": { "type": "string", "example": "otg8dTQqGLh3Q6iQI55w" },
+          "currentPlanId": { "type": "string", "example": "66a0419a0dffa47fb5f8b22f" },
+          "newPlanId": { "type": "string", "example": "66a0419a0dffa47fb5f8b22f" }
+        }
+      },
+      "example": {
+        "type": "PLAN_CHANGE",
+        "appId": "ve9EPM428h8vShlRW1KT",
+        "locationId": "otg8dTQqGLh3Q6iQI55w",
+        "companyId": "otg8dTQqGLh3Q6iQI55w",
+        "userId": "otg8dTQqGLh3Q6iQI55w",
+        "currentPlanId": "66a0419a0dffa47fb5f8b22f",
+        "newPlanId": "66a0419a0dffa47fb5f8b22f"
+      }
+    },
+    {
+      "event": "PriceCreate",
+      "source": "docs/webhook events/PriceCreate.md",
+      "title": "Price",
+      "description": "Called whenever a price is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "membershipOffers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string" },
+                "value": { "type": "string" },
+                "_id": { "type": "string" }
+              }
+            }
+          },
+          "variantOptionIds": { "type": "array", "items": { "type": "string" } },
+          "locationId": { "type": "string" },
+          "product": { "type": "string" },
+          "userId": { "type": "string" },
+          "name": { "type": "string" },
+          "priceType": { "type": "string" },
+          "currency": { "type": "string" },
+          "amount": { "type": "number" },
+          "recurring": {
+            "type": "object",
+            "properties": {
+              "interval": { "type": "string" },
+              "intervalCount": { "type": "number" }
+            }
+          },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "compareAtPrice": { "type": "number" },
+          "trackInventory": { "type": "null" },
+          "availableQuantity": { "type": "number" },
+          "allowOutOfStockPurchases": { "type": "boolean" }
+        }
+      },
+      "example": null
+    },
+    {
+      "event": "PriceDelete",
+      "source": "docs/webhook events/PriceDelete.md",
+      "title": "Price",
+      "description": "Called whenever a price is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "membershipOffers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string" },
+                "value": { "type": "string" },
+                "_id": { "type": "string" }
+              }
+            }
+          },
+          "variantOptionIds": { "type": "array", "items": { "type": "string" } },
+          "locationId": { "type": "string" },
+          "product": { "type": "string" },
+          "userId": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "currency": { "type": "string" },
+          "amount": { "type": "number" },
+          "recurring": {
+            "type": "object",
+            "properties": {
+              "interval": { "type": "string" },
+              "intervalCount": { "type": "number" }
+            }
+          },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "compareAtPrice": { "type": "number" },
+          "trackInventory": { "type": "null" },
+          "availableQuantity": { "type": "number" },
+          "allowOutOfStockPurchases": { "type": "boolean" }
+        }
+      },
+      "example": null
+    },
+    {
+      "event": "PriceUpdate",
+      "source": "docs/webhook events/PriceUpdate.md",
+      "title": "Price",
+      "description": "Called whenever a price is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "membershipOffers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string" },
+                "value": { "type": "string" },
+                "_id": { "type": "string" }
+              }
+            }
+          },
+          "variantOptionIds": { "type": "array", "items": { "type": "string" } },
+          "locationId": { "type": "string" },
+          "product": { "type": "string" },
+          "userId": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "currency": { "type": "string" },
+          "amount": { "type": "number" },
+          "recurring": {
+            "type": "object",
+            "properties": {
+              "interval": { "type": "string" },
+              "intervalCount": { "type": "number" }
+            }
+          },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "compareAtPrice": { "type": "number" },
+          "trackInventory": { "type": "null" },
+          "availableQuantity": { "type": "number" },
+          "allowOutOfStockPurchases": { "type": "boolean" }
+        }
+      },
+      "example": null
+    },
+    {
+      "event": "ProductCreate",
+      "source": "docs/webhook events/ProductCreate.md",
+      "title": "Product",
+      "description": "Called whenever a product is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "description": { "type": "string" },
+          "variants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "name": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "medias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "title": { "type": "string" },
+                "url": { "type": "string" },
+                "type": { "type": "string" },
+                "isFeatured": { "type": "boolean" }
+              }
+            }
+          },
+          "locationId": { "type": "string" },
+          "name": { "type": "string" },
+          "productType": { "type": "string" },
+          "availableInStore": { "type": "boolean" },
+          "userId": { "type": "string" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "statementDescriptor": { "type": "string" },
+          "image": { "type": "string" }
+        }
+      },
+      "example": {
+        "_id": "655b33a82209e60b6adb87a5",
+        "description": "This is a really awesome product",
+        "variants": [
+          {
+            "id": "38s63qmxfr4",
+            "name": "Size",
+            "options": [{ "id": "h4z7u0im2q8", "name": "XL" }]
+          }
+        ],
+        "medias": [
+          {
+            "id": "fzrgusiuu0m",
+            "title": "1dd7dcd0-e71d-4cf7-a06b-6d47723d6a29.png",
+            "url": "https://storage.googleapis.com/ghl-test/3SwdhCsvxI8Au3KsPJt6/media/sample.png",
+            "type": "image",
+            "isFeatured": true
+          }
+        ],
+        "locationId": "3SwdhCsvxI8Au3KsPJt6",
+        "name": "Awesome Product",
+        "productType": "PHYSICAL",
+        "availableInStore": true,
+        "userId": "6YAtzfzpmHAdj0e8GkKp",
+        "createdAt": "2023-11-20T10:23:36.515Z",
+        "updatedAt": "2024-01-23T09:57:04.846Z",
+        "statementDescriptor": "abcde",
+        "image": "https://storage.googleapis.com/ghl-test/3SwdhCsvxI8Au3KsPJt6/media/65af8d5df88bdb4b1022ee90.png"
+      }
+    },
+    {
+      "event": "ProductDelete",
+      "source": "docs/webhook events/ProductDelete.md",
+      "title": "Product",
+      "description": "Called whenever a product is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "description": { "type": "string" },
+          "variants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "name": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "medias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "title": { "type": "string" },
+                "url": { "type": "string" },
+                "type": { "type": "string" },
+                "isFeatured": { "type": "boolean" }
+              }
+            }
+          },
+          "locationId": { "type": "string" },
+          "name": { "type": "string" },
+          "productType": { "type": "string" },
+          "availableInStore": { "type": "boolean" },
+          "userId": { "type": "string" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "statementDescriptor": { "type": "string" },
+          "image": { "type": "string" }
+        }
+      },
+      "example": {
+        "_id": "655b33a82209e60b6adb87a5",
+        "description": "This is a really awesome product",
+        "variants": [
+          {
+            "id": "38s63qmxfr4",
+            "name": "Size",
+            "options": [{ "id": "h4z7u0im2q8", "name": "XL" }]
+          }
+        ],
+        "medias": [
+          {
+            "id": "fzrgusiuu0m",
+            "title": "1dd7dcd0-e71d-4cf7-a06b-6d47723d6a29.png",
+            "url": "https://storage.googleapis.com/ghl-test/3SwdhCsvxI8Au3KsPJt6/media/sample.png",
+            "type": "image",
+            "isFeatured": true
+          }
+        ],
+        "locationId": "3SwdhCsvxI8Au3KsPJt6",
+        "name": "Awesome Product",
+        "productType": "PHYSICAL",
+        "availableInStore": true,
+        "userId": "6YAtzfzpmHAdj0e8GkKp",
+        "createdAt": "2023-11-20T10:23:36.515Z",
+        "updatedAt": "2024-01-23T09:57:04.846Z",
+        "statementDescriptor": "abcde",
+        "image": "https://storage.googleapis.com/ghl-test/3SwdhCsvxI8Au3KsPJt6/media/65af8d5df88bdb4b1022ee90.png"
+      }
+    },
+    {
+      "event": "ProductUpdate",
+      "source": "docs/webhook events/ProductUpdate.md",
+      "title": "Product",
+      "description": "Called whenever a product is updated",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "description": { "type": "string" },
+          "variants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "name": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "medias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "title": { "type": "string" },
+                "url": { "type": "string" },
+                "type": { "type": "string" },
+                "isFeatured": { "type": "boolean" }
+              }
+            }
+          },
+          "locationId": { "type": "string" },
+          "name": { "type": "string" },
+          "productType": { "type": "string" },
+          "availableInStore": { "type": "boolean" },
+          "userId": { "type": "string" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "statementDescriptor": { "type": "string" },
+          "image": { "type": "string" }
+        }
+      },
+      "example": {
+        "_id": "655b33a82209e60b6adb87a5",
+        "description": "This is a really awesome product",
+        "variants": [
+          {
+            "id": "38s63qmxfr4",
+            "name": "Size",
+            "options": [{ "id": "h4z7u0im2q8", "name": "XL" }]
+          }
+        ],
+        "medias": [
+          {
+            "id": "fzrgusiuu0m",
+            "title": "1dd7dcd0-e71d-4cf7-a06b-6d47723d6a29.png",
+            "url": "https://storage.googleapis.com/ghl-test/3SwdhCsvxI8Au3KsPJt6/media/sample.png",
+            "type": "image",
+            "isFeatured": true
+          }
+        ],
+        "locationId": "3SwdhCsvxI8Au3KsPJt6",
+        "name": "Awesome Product",
+        "productType": "PHYSICAL",
+        "availableInStore": true,
+        "userId": "6YAtzfzpmHAdj0e8GkKp",
+        "createdAt": "2023-11-20T10:23:36.515Z",
+        "updatedAt": "2024-01-23T09:57:04.846Z",
+        "statementDescriptor": "abcde",
+        "image": "https://storage.googleapis.com/ghl-test/3SwdhCsvxI8Au3KsPJt6/media/65af8d5df88bdb4b1022ee90.png"
+      }
+    },
+    {
+      "event": "ProviderOutboundMessage",
+      "source": "docs/webhook events/ProviderOutboundMessage.md",
+      "title": "Conversation Provider - Outbound Message",
+      "description": "Called whenever a user sends a message to a contact and has a custom provider as the default channel in the settings.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "contactId": { "type": "string" },
+          "locationId": { "type": "string" },
+          "messageId": { "type": "string" },
+          "emailMessageId": { "type": "string" },
+          "type": { "type": "Email/SMS" },
+          "attachments": { "type": "array" },
+          "message": { "type": "string" },
+          "phone": { "type": "string" },
+          "emailTo": { "type": "string" },
+          "emailFrom": { "type": "string" },
+          "html": { "type": "string" },
+          "subject": { "type": "string" },
+          "userId": { "type": "string" }
+        }
+      },
+      "example": null
+    },
+    {
+      "event": "RecordCreate",
+      "source": "docs/webhook events/RecordCreate.md",
+      "title": "Record Create",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "RecordDelete",
+      "source": "docs/webhook events/RecordDelete.md",
+      "title": "Delete Record",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "RecordUpdate",
+      "source": "docs/webhook events/RecordUpdate.md",
+      "title": "Record Update",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "RelationCreate",
+      "source": "docs/webhook events/RelationCreate.md",
+      "title": "Relation Create",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "RelationDelete",
+      "source": "docs/webhook events/RelationDelete.md",
+      "title": "Relation Delete",
+      "description": "",
+      "schema": null,
+      "example": null
+    },
+    {
+      "event": "TaskComplete",
+      "source": "docs/webhook events/TaskComplete.md",
+      "title": "Task",
+      "description": "Called whenever a task is completed",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "body": { "type": "string" },
+          "contactId": { "type": "string" },
+          "title": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dueDate": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "TaskComplete",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "5HrB1IbmnKMBXloldFuP",
+        "assignedTo": "bNl8QNGXhIQJLv8eeASQ",
+        "body": "testing",
+        "contactId": "WFwVrSSjZ2CNHbZThQX2",
+        "dateAdded": "2021-11-29T13:37:28.304Z",
+        "dueDate": "2021-12-22T06:55:00.000Z",
+        "title": "test"
+      }
+    },
+    {
+      "event": "TaskCreate",
+      "source": "docs/webhook events/TaskCreate.md",
+      "title": "Task",
+      "description": "Called whenever a task is created",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "body": { "type": "string" },
+          "contactId": { "type": "string" },
+          "title": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dueDate": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "TaskCreate",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "UlRWGLSXh0ji5qbiGu4i",
+        "assignedTo": "63e4qiWDsFJjOYAC8phG",
+        "body": "Loram ipsum",
+        "contactId": "CWBf1PR9LvvBkcYqiXlc",
+        "title": "Loram ipsum",
+        "dateAdded": "2021-11-26T12:41:02.193Z",
+        "dueDate": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "TaskDelete",
+      "source": "docs/webhook events/TaskDelete.md",
+      "title": "Task",
+      "description": "Called whenever a task is deleted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "locationId": { "type": "string" },
+          "id": { "type": "string" },
+          "assignedTo": { "type": "string" },
+          "body": { "type": "string" },
+          "contactId": { "type": "string" },
+          "title": { "type": "string" },
+          "dateAdded": { "type": "string" },
+          "dueDate": { "type": "string" }
+        }
+      },
+      "example": {
+        "type": "TaskDelete",
+        "locationId": "ve9EPM428h8vShlRW1KT",
+        "id": "UlRWGLSXh0ji5qbiGu4i",
+        "assignedTo": "63e4qiWDsFJjOYAC8phG",
+        "body": "Loram ipsum",
+        "contactId": "CWBf1PR9LvvBkcYqiXlc",
+        "title": "Loram ipsum",
+        "dateAdded": "2021-11-26T12:41:02.193Z",
+        "dueDate": "2021-11-26T12:41:02.193Z"
+      }
+    },
+    {
+      "event": "UserCreate",
+      "source": "docs/webhook events/UserCreate.md",
+      "title": "User",
+      "description": "Called whenever a user is created",
+      "schema": {
+        "type": "string",
+        "locationId": "string",
+        "companyId": "string",
+        "id": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "email": "string",
+        "phone": "string",
+        "extension": "string",
+        "role": "string",
+        "permissions": {
+          "adwordsReportingEnabled": "boolean",
+          "affiliateManagerEnabled": "boolean",
+          "agentReportingEnabled": "boolean",
+          "appointmentsEnabled": "boolean",
+          "assignedDataOnly": "boolean",
+          "attributionsReportingEnabled": "boolean",
+          "bloggingEnabled": "boolean",
+          "botService": "boolean",
+          "bulkRequestsEnabled": "boolean",
+          "campaignsEnabled": "boolean",
+          "campaignsReadOnly": "boolean",
+          "cancelSubscriptionEnabled": "boolean",
+          "communitiesEnabled": "boolean",
+          "contactsEnabled": "boolean",
+          "contentAiEnabled": "boolean",
+          "conversationsEnabled": "boolean",
+          "dashboardStatsEnabled": "boolean",
+          "facebookAdsReportingEnabled": "boolean",
+          "funnelsEnabled": "boolean",
+          "invoiceEnabled": "boolean",
+          "leadValueEnabled": "boolean",
+          "marketingEnabled": "boolean",
+          "membershipEnabled": "boolean",
+          "onlineListingsEnabled": "boolean",
+          "opportunitiesEnabled": "boolean",
+          "paymentsEnabled": "boolean",
+          "phoneCallEnabled": "boolean",
+          "recordPaymentEnabled": "boolean",
+          "refundsEnabled": "boolean",
+          "reviewsEnabled": "boolean",
+          "settingsEnabled": "boolean",
+          "socialPlanner": "boolean",
+          "tagsEnabled": "boolean",
+          "triggersEnabled": "boolean",
+          "websitesEnabled": "boolean",
+          "workflowsEnabled": "boolean",
+          "workflowsReadOnly": "boolean"
+        },
+        "locations": ["string"]
+      },
+      "example": null
+    }
+  ]
+}

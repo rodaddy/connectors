@@ -1,0 +1,31 @@
+{
+  "name": "@rodaddy/connectors-workspace",
+  "private": true,
+  "description": "Business API connectors: one npm workspace, one package per connector",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "check": "npm run lint && npm run typecheck && npm run test",
+    "lint": "oxlint --type-aware --deny-warnings",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm test --workspaces --if-present",
+    "hooks:install": "./_githooks/install.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "expect": "^30",
+    "oxlint": "^1.76.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "prettier": "^3.4.2",
+    "typescript": "^7.0.2"
+  }
+}

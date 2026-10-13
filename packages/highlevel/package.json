@@ -1,0 +1,33 @@
+{
+  "name": "@rodaddy/connectors-highlevel",
+  "version": "0.1.0",
+  "private": false,
+  "description": "A GoHighLevel API client: every official endpoint through a generated catalog, typed helpers, an account guard, opt-in writes",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "exports": {
+    ".": {
+      "@rodaddy/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "catalog",
+    "README.md"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "node --test 'tests/**/*.test.ts'",
+    "catalog:fetch": "node scripts/fetch-upstream.ts",
+    "catalog:generate": "node scripts/generate-rest.ts && node scripts/generate-webhooks.ts && node scripts/generate-event-names.ts",
+    "catalog:check": "node scripts/check-catalog.ts"
+  }
+}

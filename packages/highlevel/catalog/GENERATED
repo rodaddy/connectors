@@ -1,0 +1,3 @@
+# Written by scripts/generate-rest.ts and scripts/generate-webhooks.ts; regenerate, never edit.
+rest-catalog.json
+webhook-catalog.json

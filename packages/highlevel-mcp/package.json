@@ -1,0 +1,23 @@
+{
+  "name": "@rodaddy/connectors-highlevel-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A stdio MCP server over @rodaddy/connectors-highlevel: allowlisted GoHighLevel tools inside a launch capability envelope",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "bin": {
+    "highlevel-mcp": "./dist/server.js"
+  },
+  "dependencies": {
+    "@rodaddy/connectors-highlevel": "*"
+  },
+  "scripts": {
+    "start": "node --conditions=@rodaddy/source src/server.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "node --conditions=@rodaddy/source --test 'tests/**/*.test.ts'"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.tsbuildinfo
+*.log
+.DS_Store
+.env*
+
+# Secrets: everything except the readme.
+secrets/*
+!secrets/README.md
+
+# Test temp roots (HIGHLEVEL_TEST_TMP falls back here).
+packages/highlevel/.test-tmp/
+.lane/

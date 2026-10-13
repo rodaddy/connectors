@@ -1,0 +1,30 @@
+{
+  "openapi": "3.0.0",
+  "components": {
+    "securitySchemes": {
+      "Location-Access": { "type": "http", "description": "Sub-Account token" }
+    }
+  },
+  "paths": {
+    "/widgets/{locationId}/items/{itemId}": {
+      "get": {
+        "operationId": "get-item",
+        "summary": "Get an item",
+        "tags": ["Widgets"],
+        "security": [{ "Location-Access": ["widgets.readonly"] }],
+        "parameters": [
+          { "name": "Version", "in": "header", "schema": { "enum": ["v3"] } },
+          { "name": "locationId", "in": "path", "required": true },
+          { "name": "itemId", "in": "path", "required": true },
+          { "name": "expand", "in": "query", "required": false },
+          { "name": "userId", "in": "query", "required": true }
+        ]
+      },
+      "post": {
+        "operationId": "update-item",
+        "requestBody": { "content": { "application/json": {} } }
+      },
+      "x-extension": { "ignored": true }
+    }
+  }
+}

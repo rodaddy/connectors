@@ -1,0 +1,9 @@
+This repository is MIT-licensed (see LICENSE), except as noted below.
+
+packages/highlevel/catalog/rest-catalog.json and webhook-catalog.json, and the
+generated src/webhooks/event-names.ts, are derived from GoHighLevel's public
+API documentation, https://github.com/GoHighLevel/highlevel-api-docs, at
+commit 0af86a4cbd48c66a4071c7e509d1079f9f10ed17. That repository is published
+under Creative Commons Zero v1.0 Universal (CC0-1.0); its LICENSE file at that
+commit is the CC0 1.0 legal code. GoHighLevel and HighLevel are trademarks of
+their owner; this project is not affiliated with or endorsed by them.

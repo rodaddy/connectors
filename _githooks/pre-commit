@@ -1,0 +1,171 @@
+#!/usr/bin/env bash
+# pre-commit -- block the commit when the staged tree violates the standard.
+#
+# Runs against STAGED CONTENT, via a temporary index checkout (tsc is the one
+# exception, see its step below). Checking the
+# working tree instead is the single most common way a hook lies: you stage a
+# fix, leave a broken edit unstaged, and the hook passes on code that is not
+# what you are committing.
+#
+# Every check here is also in .github/workflows/ci.yml, running the same
+# command. A hook that CI does not repeat is bypassable with --no-verify; a CI
+# check the hook does not run wastes a push round-trip to discover.
+#
+# FAIL CLOSED. A missing tool is a failure, not a skip. Three of the mechanisms
+# this standard was derived from "passed" because the thing they invoked was
+# absent or pointed at a path that did not exist.
+#
+# Copied from _DOCS/typescript-exemplar/_githooks/pre-commit; keep the posture.
+
+set -uo pipefail
+
+# core.hooksPath points at _githooks (see install.sh), which shadows the global
+# pre-commit (gitleaks, protected-branch guard). Chain it first, unchanged.
+global_hook="$HOME/.config/git/hooks/pre-commit"
+if [[ -x "$global_hook" ]]; then
+  "$global_hook" "$@" || exit $?
+fi
+
+fail=0
+note() { printf '  %s\n' "$*"; }
+step() { printf '\n[pre-commit] %s\n' "$*"; }
+
+require() {
+  if ! command -v "$1" >/dev/null 2>&1; then
+    step "MISSING TOOL: $1"
+    note "This hook fails closed. Install it, do not bypass."
+    note "  npm install"
+    exit 1
+  fi
+}
+
+require node
+require npx
+
+# Staged TypeScript files, filtered to those that still exist (a delete stages a
+# path that is gone; running a linter on it errors out for the wrong reason).
+mapfile -t staged < <(git diff --cached --name-only --diff-filter=ACMR -- '*.ts' '*.tsx' '*.mts' '*.cts')
+existing=()
+for f in "${staged[@]}"; do
+  [[ -f "$f" ]] && existing+=("$f")
+done
+
+if [[ ${#existing[@]} -eq 0 ]]; then
+  step "no staged TypeScript files -- nothing to check"
+  exit 0
+fi
+
+# ---------------------------------------------------------------------------
+# Check the STAGED content, not the working tree.
+#
+# git stash --keep-index is the usual trick and it is dangerous here: it touches
+# the working tree, and an interrupted hook can leave the user's uncommitted
+# work in a stash they did not ask for. Checking the index out into a scratch
+# tree is read-only with respect to what the developer has open.
+# ---------------------------------------------------------------------------
+repo_root="$(git rev-parse --show-toplevel)"
+
+# WHERE THE STAGED CHECKOUT LIVES, AND WHY NOT UNDER .git/
+#
+# The obvious home is "$(git rev-parse --git-dir)/pre-commit-staged". It does
+# not work: PRETTIER HARD-SKIPS ANY PATH CONTAINING A .git/ SEGMENT, and no
+# flag turns that off -- `--ignore-path /dev/null` does not, because it is not
+# an ignore-file rule. Prettier then printed "No matching files" and exited 2,
+# which this hook read as a formatting failure, so EVERY CLEAN COMMIT WAS
+# BLOCKED by a check that had examined zero files. Verified directly on
+# 2026-07-30: the identical file passes at a path without `.git/` in it and
+# fails at one with.
+#
+# So the checkout goes into a scratch directory outside the repo instead:
+# HOOK_SCRATCH_ROOT when set, else $TMPDIR (or /tmp)/connectors-hooks.
+scratch_root="${HOOK_SCRATCH_ROOT:-${TMPDIR:-/tmp}/connectors-hooks}"
+scratch="$scratch_root/pre-commit-staged-$$"
+
+# A FRESH scratch each run: the staged checkout must not inherit files from a
+# previous commit, or a path deleted in THIS commit lingers and gets linted.
+# The $$ suffix gives each run its own directory, which also makes concurrent
+# commits (a rebase running alongside an editor's commit) safe.
+#
+# Cleanup is `mv` into _archive, never a recursive delete -- a rule with no
+# carve-out, and a hook is exactly the kind of place a
+# convenient `rm -rf` gets added and then inherited by fifty repos.
+cleanup_scratch() {
+  local archive="$scratch_root/_archive"
+  mkdir -p "$archive" 2>/dev/null || return 0
+  mv "$scratch" "$archive/$(basename "$scratch")-$(date +%s)" 2>/dev/null || true
+}
+trap cleanup_scratch EXIT
+
+mkdir -p "$scratch"
+git checkout-index --prefix="$scratch/" -af
+
+# Tools are INVOKED from the repo root (that is where node_modules, tsconfig.json
+# and .oxlintrc.json live) but POINTED AT the staged copies under $scratch.
+# Running them with cwd inside $scratch instead means npx finds no node_modules
+# there and either fails to resolve the binary or silently downloads a different
+# version -- and the hook then reports that as a code violation, so every commit
+# fails for a reason that has nothing to do with the code. The exemplar's Python
+# twin hit exactly this on its first demo run (2026-07-30).
+staged_paths=()
+for f in "${existing[@]}"; do
+  staged_paths+=("$scratch/$f")
+done
+
+cd "$repo_root" || exit 1
+
+# --ignore-path /dev/null so the developer's own .prettierignore cannot silently
+# exempt a staged file from the check that is supposed to gate it.
+step "prettier --check (staged content)"
+if ! npx prettier --check --ignore-path /dev/null "${staged_paths[@]}" 2>&1 | sed 's/^/  /'; then
+  note "FAILED. Fix with: npm run format"
+  fail=1
+fi
+
+# --no-ignore because the staged copies live outside the repo, where oxlint's
+# ignore rules and .gitignore-awareness would exclude them. Without it the
+# linter reports "no files to lint" and exits 0 -- a check that examines nothing
+# and calls it a pass, which is the same shape of defect the prettier `.git/`
+# skip produced above.
+step "oxlint (staged content)"
+if ! npx oxlint --no-ignore --deny-warnings "${staged_paths[@]}" 2>&1 | sed 's/^/  /'; then
+  note "FAILED. Some are auto-fixable: npx oxlint --type-aware --fix"
+  note "complexity and max-depth are NOT auto-fixable -- they mean the function"
+  note "needs restructuring, which is the point. See .oxlintrc.json for why."
+  fail=1
+fi
+
+# tsc runs over the whole project, not just staged files: a change in one module
+# breaks type contracts in its callers, and per-file checking cannot see that.
+# The root tsconfig.json governs the scope: it includes every packages/*
+# project, so a change in one package is checked against its callers in another.
+#
+# THE ONE EXCEPTION TO "STAGED CONTENT ONLY": tsc reads the WORKING TREE, not
+# the staged checkout under $scratch (that copy has no node_modules and no
+# project references resolve there). Unstaged edits can therefore make this
+# step pass or fail on code you are not committing. CI's `npm run check`
+# typechecks the committed tree, so a lie here is caught at the push.
+step "tsc --noEmit (whole project)"
+if ! npx tsc --noEmit 2>&1 | sed 's/^/  /'; then
+  note "FAILED. Type errors block the commit."
+  fail=1
+fi
+
+# ---------------------------------------------------------------------------
+# Standard-specific checks that no off-the-shelf linter performs (naive Date,
+# any-typed catch, console.*, bare TODO). They live in ONE script that CI runs
+# too, so the hook and CI cannot drift apart.
+# ---------------------------------------------------------------------------
+step "scripts/checks.sh (staged content)"
+if ! "$repo_root/scripts/checks.sh" "${staged_paths[@]}" 2>&1 | sed 's/^/  /'; then
+  fail=1
+fi
+
+if [[ $fail -ne 0 ]]; then
+  printf '\n[pre-commit] BLOCKED. Nothing was committed.\n'
+  printf '  Fix the above, re-stage, and commit again.\n'
+  printf '  --no-verify is not an approved workaround in a durable repo.\n\n'
+  exit 1
+fi
+
+printf '\n[pre-commit] all checks passed\n'
+exit 0
