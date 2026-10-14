@@ -19,8 +19,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "catalog",
-    "README.md"
+    "catalog"
   ],
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",

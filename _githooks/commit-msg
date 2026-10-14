@@ -7,11 +7,6 @@
 #
 # Argument $1 is the path to the file holding the proposed message. Rewriting
 # that file changes the commit; this hook only reads it.
-#
-# Copied from _DOCS/typescript-exemplar/_githooks/commit-msg and kept the same
-# rule: a commit message format is a property of the repo set, not of the
-# language, and two subtly different regexes would mean "conventional commits"
-# quietly meant two things.
 
 set -uo pipefail
 
