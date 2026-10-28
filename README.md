@@ -118,6 +118,15 @@ catalogs from the pinned upstream and fails on drift. It is manual, not part of
 `npm run check`: run `catalog:fetch` first (it clones the upstream docs repo
 under the OS temp dir; `HIGHLEVEL_UPSTREAM_ROOT` overrides where).
 
+## How it was built
+
+The GoHighLevel library and its MCP server were built on 2026-10-07 from a
+written decisions log and a capability inventory, cut into 18 issues and run
+as parallel AI coding-agent lanes in three waves, each merged through its own
+integration branch. The build story covers the waves, the design decisions,
+how the work was tested, and what changed after review:
+[docs/BUILD-STORY.md](docs/BUILD-STORY.md).
+
 ## Project status
 
 Experimental, version 0.1.0. A few behaviours were checked against live GHL
